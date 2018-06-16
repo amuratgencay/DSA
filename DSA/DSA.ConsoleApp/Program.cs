@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DSA.ConsoleApp.DataStructures.LinkedList.SinglyLinkedList;
 
 namespace DSA.ConsoleApp
 {
@@ -10,7 +7,8 @@ namespace DSA.ConsoleApp
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello DSA");
+            Console.WriteLine("*******************Linked List*******************\n");
+            SinglyLinkedListExample.Run();
         }
     }
 }
