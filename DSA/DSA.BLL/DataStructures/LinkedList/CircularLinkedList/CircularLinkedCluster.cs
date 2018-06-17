@@ -5,7 +5,7 @@ using DSA.Entity.DataStructures;
 
 namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
 {
-    public class CircularLinkedCluster<T> : ICluster<T>
+    public class CircularLinkedCluster<T> : IExpandedCluster<T>
     {
         private int _count;
         private Node<T> _first, _last;

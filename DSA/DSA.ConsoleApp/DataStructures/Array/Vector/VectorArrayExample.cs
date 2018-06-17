@@ -1,16 +1,17 @@
 ﻿using System;
-using DSA.BLL.DataStructures.LinkedList.CircularLinkedList;
+using DSA.BLL.DataStructures.Array;
 using DSA.Entity.DataStructures;
 
-namespace DSA.ConsoleApp.DataStructures.LinkedList.CircularLinkedList
+namespace DSA.ConsoleApp.DataStructures.Array.Vector
 {
-    public static class CircularLinkedListExample
+    public static class VectorArrayExample
     {
         public static void Run()
         {
-            IExpandedCluster<int> cluster = new CircularLinkedCluster<int>();
+            IExpandedCluster<int> cluster = new Vector<int>(5);
 
-            Console.WriteLine("<Circular Linked List>");
+
+            Console.WriteLine("<Vector Array>");
             Console.WriteLine();
             cluster.Add(2);
             cluster.Add(3);
@@ -25,8 +26,8 @@ namespace DSA.ConsoleApp.DataStructures.LinkedList.CircularLinkedList
             cluster.Remove(7);
             Console.WriteLine("\tRemove -> (7): " + cluster);
             Console.WriteLine();
-            cluster.RemoveAt(2);
-            Console.WriteLine("\tRemoveAt -> (2) " + cluster);
+            cluster.RemoveAt(3);
+            Console.WriteLine("\tRemoveAt -> (3) " + cluster);
             Console.WriteLine();
             Console.WriteLine("\tContains -> (8): " + cluster.Contains(8));
             Console.WriteLine();
@@ -50,7 +51,7 @@ namespace DSA.ConsoleApp.DataStructures.LinkedList.CircularLinkedList
             cluster.Add(13);
             Console.WriteLine("\tAdd -> " + cluster);
             Console.WriteLine();
-            Console.WriteLine("</Circular Linked List>");
+            Console.WriteLine("</Vector Array>");
             Console.WriteLine();
         }
     }

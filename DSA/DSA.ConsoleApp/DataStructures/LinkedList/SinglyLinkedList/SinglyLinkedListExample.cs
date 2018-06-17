@@ -8,7 +8,7 @@ namespace DSA.ConsoleApp.DataStructures.LinkedList.SinglyLinkedList
     {
         public static void Run()
         {
-            ICluster<int> cluster = new SinglyLinkedCluster<int>();
+            IExpandedCluster<int> cluster = new SinglyLinkedCluster<int>();
 
 
             Console.WriteLine("<Singly Linked List>");

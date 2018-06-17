@@ -1,32 +1,25 @@
 ﻿using System;
-using DSA.BLL.DataStructures.LinkedList.CircularLinkedList;
+using DSA.BLL.DataStructures.Array;
 using DSA.Entity.DataStructures;
 
-namespace DSA.ConsoleApp.DataStructures.LinkedList.CircularLinkedList
+namespace DSA.ConsoleApp.DataStructures.Array.Sequence
 {
-    public static class CircularLinkedListExample
+    public class ArrayExample
     {
         public static void Run()
         {
-            IExpandedCluster<int> cluster = new CircularLinkedCluster<int>();
+            ICluster<int> cluster = new Sequence<int>(5);
 
-            Console.WriteLine("<Circular Linked List>");
+            Console.WriteLine("<Sequence Array>");
             Console.WriteLine();
-            cluster.Add(2);
-            cluster.Add(3);
-            cluster.Add(5);
-            cluster.Add(8);
-            cluster.Add(13);
+            Console.WriteLine("\tCreate -> " + cluster);
+            Console.WriteLine();
+            cluster[0] = 2;
+            cluster[1] = 3;
+            cluster[2] = 5;
+            cluster[3] = 8;
+            cluster[4] = 13;
             Console.WriteLine("\tAdd -> " + cluster);
-            Console.WriteLine();
-            cluster.Insert(2, 7);
-            Console.WriteLine("\tInsert -> (2,7): " + cluster);
-            Console.WriteLine();
-            cluster.Remove(7);
-            Console.WriteLine("\tRemove -> (7): " + cluster);
-            Console.WriteLine();
-            cluster.RemoveAt(2);
-            Console.WriteLine("\tRemoveAt -> (2) " + cluster);
             Console.WriteLine();
             Console.WriteLine("\tContains -> (8): " + cluster.Contains(8));
             Console.WriteLine();
@@ -45,12 +38,12 @@ namespace DSA.ConsoleApp.DataStructures.LinkedList.CircularLinkedList
             cluster.Clear();
             Console.WriteLine("\tClear -> " + cluster);
             Console.WriteLine();
-            cluster.Add(5);
-            cluster.Add(8);
-            cluster.Add(13);
+            cluster[0] = 5;
+            cluster[1] = 8;
+            cluster[2] = 13;
             Console.WriteLine("\tAdd -> " + cluster);
             Console.WriteLine();
-            Console.WriteLine("</Circular Linked List>");
+            Console.WriteLine("</Sequence Array>");
             Console.WriteLine();
         }
     }

@@ -5,7 +5,7 @@ using DSA.Entity.DataStructures;
 
 namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
 {
-    public class DoublyLinkedCluster<T> : ICluster<T>
+    public class DoublyLinkedCluster<T> : IExpandedCluster<T>
     {
         private int _count;
         private Node<T> _first, _last;
