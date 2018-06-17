@@ -1,18 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using DSA.Entity.DataStructures;
 
 namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
 {
-    public class DoublyLinkedCluster<T> : IExpandedCluster<T>
+    public class DoublyLinkedCluster<T> : LinkedCluster<T>
     {
-        private int _count;
-        private Node<T> _first, _last;
+        private DoublySinglyNode<T> _first, _last;
 
-        public void Add(T item)
+        public override T this[int index]
         {
-            var n = new Node<T>(item);
+            get
+            {
+                if (index >= _count)
+                    throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
+                var item = _first;
+                for (var i = 0; i < index; i++) item++;
+                return item.Item;
+            }
+            set
+            {
+                if (index >= _count)
+                    throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
+                var item = _first;
+                for (var i = 0; i < index; i++) item++;
+
+                item.Item = value;
+            }
+        }
+
+        public override void Add(T item)
+        {
+            var n = new DoublySinglyNode<T>(item);
 
             if (_first == null)
             {
@@ -28,13 +46,13 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
             _count++;
         }
 
-        public void Insert(int index, T item)
+        public override void Insert(int index, T item)
         {
             if (index >= _count)
                 throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
             var p = _first;
             var prev = _first;
-            var n = new Node<T>(item);
+            var n = new DoublySinglyNode<T>(item);
             for (var i = 0; i < index; i++)
             {
                 prev = p;
@@ -62,12 +80,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
             _count++;
         }
 
-        public bool Remove(T item)
-        {
-            return RemoveAt(IndexOf(item));
-        }
-
-        public bool RemoveAt(int index)
+        public override bool RemoveAt(int index)
         {
             if (index >= _count)
                 throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
@@ -101,7 +114,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
             return true;
         }
 
-        public bool Contains(T item)
+        public override bool Contains(T item)
         {
             for (var i = _first; i != null; i++)
                 if (i.Item.Equals(item))
@@ -109,7 +122,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
             return false;
         }
 
-        public int IndexOf(T item)
+        public override int IndexOf(T item)
         {
             var res = -1;
             for (var i = _first; i != null; i++)
@@ -122,7 +135,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
             return -1;
         }
 
-        public void Reverse()
+        public override void Reverse()
         {
             for (int i = 0, j = _count - 1; i < j; i++, j--)
             {
@@ -138,7 +151,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
             }
         }
 
-        public void Clear()
+        public override void Clear()
         {
             for (var i = _first; i != null; i++)
             {
@@ -151,59 +164,9 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
             _count = 0;
         }
 
-        public IEnumerable<T> ToEnumerable()
+        public override IEnumerable<T> ToEnumerable()
         {
             for (var i = _first; i != null; i++) yield return i.Item;
-        }
-
-        public T this[int index]
-        {
-            get
-            {
-                if (index >= _count)
-                    throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
-                var item = _first;
-                for (var i = 0; i < index; i++) item++;
-                return item.Item;
-            }
-            set
-            {
-                if (index >= _count)
-                    throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
-                var item = _first;
-                for (var i = 0; i < index; i++) item++;
-
-                item.Item = value;
-            }
-        }
-
-        public int Count()
-        {
-            return _count;
-        }
-
-        public override string ToString()
-        {
-            return "{ " + ToEnumerable().Aggregate("", (x, y) => x + (!string.IsNullOrEmpty(x) ? ", " : "") + y) + " }";
-        }
-
-        private class Node<TInner>
-        {
-            public Node(TInner item)
-            {
-                Item = item;
-            }
-
-            public TInner Item { get; set; }
-            public Node<TInner> Next { get; set; }
-            public Node<TInner> Prev { get; set; }
-
-            public static Node<TInner> operator ++(Node<TInner> node)
-            {
-                if (node == null)
-                    throw new ArgumentNullException(nameof(node));
-                return node?.Next;
-            }
         }
     }
 }
