@@ -31,20 +31,20 @@ namespace DSA.BLL.DataStructures.LinkedList
         }
     }
 
-    public class DoublySinglyNode<T> : Node<T>
+    public class DoublyNode<T> : Node<T>
     {
-        public DoublySinglyNode(T item) : base(item)
+        public DoublyNode(T item) : base(item)
         {
         }
 
-        public DoublySinglyNode<T> Next { get; set; }
-        public DoublySinglyNode<T> Prev { get; set; }
+        public DoublyNode<T> Next { get; set; }
+        public DoublyNode<T> Prev { get; set; }
 
-        public static DoublySinglyNode<T> operator ++(DoublySinglyNode<T> singlyNode)
+        public static DoublyNode<T> operator ++(DoublyNode<T> node)
         {
-            if (singlyNode == null)
-                throw new ArgumentNullException(nameof(singlyNode));
-            return singlyNode?.Next;
+            if (node == null)
+                throw new ArgumentNullException(nameof(node));
+            return node?.Next;
         }
     }
 
@@ -53,10 +53,7 @@ namespace DSA.BLL.DataStructures.LinkedList
         protected int _count;
         public abstract T this[int index] { get; set; }
 
-        public int Count()
-        {
-            return _count;
-        }
+        public int Count => _count;
 
         public abstract bool Contains(T item);
         public abstract int IndexOf(T item);

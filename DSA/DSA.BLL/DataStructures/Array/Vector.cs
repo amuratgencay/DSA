@@ -82,10 +82,7 @@ namespace DSA.BLL.DataStructures.Array
             }
         }
 
-        public int Count()
-        {
-            return _count;
-        }
+        public int Count => _count;
 
         public void Add(T item)
         {

@@ -75,10 +75,7 @@ namespace DSA.BLL.DataStructures.Array
             }
         }
 
-        public int Count()
-        {
-            return _count;
-        }
+        public int Count => _count;
 
         public override string ToString()
         {
