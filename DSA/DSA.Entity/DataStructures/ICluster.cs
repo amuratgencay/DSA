@@ -5,7 +5,7 @@ namespace DSA.Entity.DataStructures
     public interface ICluster<T>
     {
         T this[int index] { get; set; }
-        int Count { get; }
+        int Count();
         void Add(T item);
         void Insert(int index, T item);
         bool Remove(T item);
