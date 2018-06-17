@@ -44,6 +44,7 @@
     <Compile Include="DataStructures\Array\Sequence.cs" />
     <Compile Include="DataStructures\LinkedList\CircularLinkedList\CircularLinkedCluster.cs" />
     <Compile Include="DataStructures\LinkedList\DoublyLinkedList\DoublyLinkedCluster.cs" />
+    <Compile Include="DataStructures\LinkedList\LinkedCluster.cs" />
     <Compile Include="DataStructures\LinkedList\SinglyLinkedList\SinglyLinkedCluster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

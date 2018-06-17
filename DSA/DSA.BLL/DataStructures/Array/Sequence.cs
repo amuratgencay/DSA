@@ -7,8 +7,8 @@ namespace DSA.BLL.DataStructures.Array
 {
     public class Sequence<T> : ICluster<T>
     {
-        private readonly int _count = 16;
         private readonly T[] _array;
+        private readonly int _count = 16;
 
         public Sequence()
         {
