@@ -5,7 +5,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
 {
     public class DoublyLinkedCluster<T> : LinkedCluster<T>
     {
-        private DoublySinglyNode<T> _first, _last;
+        private DoublyNode<T> _first, _last;
 
         public override T this[int index]
         {
@@ -30,7 +30,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
 
         public override void Add(T item)
         {
-            var n = new DoublySinglyNode<T>(item);
+            var n = new DoublyNode<T>(item);
 
             if (_first == null)
             {
@@ -52,7 +52,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
                 throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
             var p = _first;
             var prev = _first;
-            var n = new DoublySinglyNode<T>(item);
+            var n = new DoublyNode<T>(item);
             for (var i = 0; i < index; i++)
             {
                 prev = p;

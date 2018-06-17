@@ -36,7 +36,7 @@ namespace DSA.ConsoleApp.DataStructures.LinkedList.SinglyLinkedList
             cluster.Reverse();
             Console.WriteLine("\tReverse -> " + cluster);
             Console.WriteLine();
-            Console.WriteLine("\tCount -> " + cluster.Count());
+            Console.WriteLine("\tCount -> " + cluster.Count);
             Console.WriteLine();
             cluster[1] = 21;
             Console.WriteLine("\tSet[1] = 21 -> " + cluster);

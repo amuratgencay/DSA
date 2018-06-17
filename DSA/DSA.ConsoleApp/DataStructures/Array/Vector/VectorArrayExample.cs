@@ -10,7 +10,6 @@ namespace DSA.ConsoleApp.DataStructures.Array.Vector
         {
             IExpandedCluster<int> cluster = new Vector<int>(5);
 
-
             Console.WriteLine("<Vector Array>");
             Console.WriteLine();
             cluster.Add(2);
@@ -36,7 +35,7 @@ namespace DSA.ConsoleApp.DataStructures.Array.Vector
             cluster.Reverse();
             Console.WriteLine("\tReverse -> " + cluster);
             Console.WriteLine();
-            Console.WriteLine("\tCount -> " + cluster.Count());
+            Console.WriteLine("\tCount -> " + cluster.Count);
             Console.WriteLine();
             cluster[1] = 21;
             Console.WriteLine("\tSet[1] = 21 -> " + cluster);

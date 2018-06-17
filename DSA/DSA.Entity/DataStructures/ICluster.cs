@@ -5,7 +5,7 @@ namespace DSA.Entity.DataStructures
     public interface ICluster<T>
     {
         T this[int index] { get; set; }
-        int Count();
+        int Count { get; }
         bool Contains(T item);
         int IndexOf(T item);
         void Reverse();
