@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DSA.Entity.DataStructures;
 
 namespace DSA.BLL.DataStructures.Array
 {
@@ -9,24 +8,23 @@ namespace DSA.BLL.DataStructures.Array
     {
         private readonly int _factory = 2;
         private T[] _array;
-        private int _count = 16;
         private int _index;
 
         public Vector()
         {
-            _array = new T[_count];
+            _array = new T[Count];
         }
 
         public Vector(int count, int factory = 2)
         {
-            _count = count;
+            Count = count;
             _factory = factory;
-            _array = new T[_count];
+            _array = new T[Count];
         }
 
         public bool Contains(T item)
         {
-            for (var i = 0; i < _count; i++)
+            for (var i = 0; i < Count; i++)
                 if (_array[i].Equals(item))
                     return true;
 
@@ -35,7 +33,7 @@ namespace DSA.BLL.DataStructures.Array
 
         public int IndexOf(T item)
         {
-            for (var i = 0; i < _count; i++)
+            for (var i = 0; i < Count; i++)
                 if (_array[i].Equals(item))
                     return i;
 
@@ -44,7 +42,7 @@ namespace DSA.BLL.DataStructures.Array
 
         public void Reverse()
         {
-            for (int i = 0, j = _count - 1; i < j; i++, j--)
+            for (int i = 0, j = Count - 1; i < j; i++, j--)
             {
                 var tmp = _array[i];
                 _array[i] = _array[j];
@@ -54,49 +52,51 @@ namespace DSA.BLL.DataStructures.Array
 
         public void Clear()
         {
-            for (var i = 0; i < _count; i++) _array[i] = default(T);
+            for (var i = 0; i < Count; i++) _array[i] = default(T);
 
             _index = 0;
         }
 
         public IEnumerable<T> ToEnumerable()
         {
-            for (var i = 0; i < _count; i++) yield return _array[i];
+            for (var i = 0; i < Count; i++) yield return _array[i];
         }
 
         public T this[int index]
         {
             get
             {
-                if (index >= _count)
-                    throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
+                if (index >= Count)
+                    throw new IndexOutOfRangeException("Index grater or equal count.");
                 return _array[index];
             }
             set
             {
-                if (index >= _count)
-                    throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
-                _array[index] = value;
                 if (index > _index)
                     _index = index + 1;
+
+                while (_index - 1 >= Count)
+                    CloneVector();
+
+                _array[index] = value;
             }
         }
 
-        public int Count => _count;
+        public int Count { get; private set; } = 16;
 
         public void Add(T item)
         {
-            if (_index >= _count) CloneVector();
+            if (_index >= Count) CloneVector();
             _array[_index++] = item;
         }
 
         public void Insert(int index, T item)
         {
-            if (_index >= _count) CloneVector();
+            if (_index >= Count) CloneVector();
 
             var tmp = _array[index];
             _array[index] = item;
-            for (var i = index; i < _count - 1; i++)
+            for (var i = index; i < Count - 1; i++)
             {
                 var tmp2 = _array[i + 1];
                 _array[i + 1] = tmp;
@@ -117,8 +117,8 @@ namespace DSA.BLL.DataStructures.Array
 
         public bool RemoveAt(int index)
         {
-            if (index >= _count)
-                throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
+            if (index >= Count)
+                throw new IndexOutOfRangeException("Index grater or equal count.");
 
             _array[index] = default(T);
             return true;
@@ -126,11 +126,11 @@ namespace DSA.BLL.DataStructures.Array
 
         private void CloneVector()
         {
-            var tmpCount = _count * _factory;
+            var tmpCount = Count * _factory;
             var tmp = new T[tmpCount];
-            for (var i = 0; i < _count; i++) tmp[i] = _array[i];
+            for (var i = 0; i < Count; i++) tmp[i] = _array[i];
             _array = tmp;
-            _count = tmpCount;
+            Count = tmpCount;
         }
 
         public override string ToString()

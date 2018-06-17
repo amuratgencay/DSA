@@ -11,16 +11,16 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
         {
             get
             {
-                if (index >= _count)
-                    throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
+                if (index >= Count)
+                    throw new IndexOutOfRangeException("Index grater or equal count.");
                 var item = _first;
                 for (var i = 0; i < index; i++) item++;
                 return item.Item;
             }
             set
             {
-                if (index >= _count)
-                    throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
+                if (index >= Count)
+                    throw new IndexOutOfRangeException("Index grater or equal count.");
                 var item = _first;
                 for (var i = 0; i < index; i++) item++;
 
@@ -43,13 +43,13 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
                 _last = _last.Next;
             }
 
-            _count++;
+            Count++;
         }
 
         public override void Insert(int index, T item)
         {
-            if (index >= _count)
-                throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
+            if (index >= Count)
+                throw new IndexOutOfRangeException("Index grater or equal count.");
             var p = _first;
             var prev = _first;
             var n = new DoublyNode<T>(item);
@@ -77,13 +77,13 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
                 n.Next = p;
             }
 
-            _count++;
+            Count++;
         }
 
         public override bool RemoveAt(int index)
         {
-            if (index >= _count)
-                throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
+            if (index >= Count)
+                throw new IndexOutOfRangeException("Index grater or equal count.");
             var item = _first;
             var prev = _first;
             for (var i = 0; i < index; i++)
@@ -110,7 +110,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
                 item.Prev = null;
             }
 
-            _count--;
+            Count--;
             return true;
         }
 
@@ -137,7 +137,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
 
         public override void Reverse()
         {
-            for (int i = 0, j = _count - 1; i < j; i++, j--)
+            for (int i = 0, j = Count - 1; i < j; i++, j--)
             {
                 var p = _first;
                 for (var k = 0; k < i; k++) p++;
@@ -161,7 +161,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
             }
 
             _first = _last = null;
-            _count = 0;
+            Count = 0;
         }
 
         public override IEnumerable<T> ToEnumerable()

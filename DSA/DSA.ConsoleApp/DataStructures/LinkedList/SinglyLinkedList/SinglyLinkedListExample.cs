@@ -1,6 +1,6 @@
 ﻿using System;
+using DSA.BLL.DataStructures;
 using DSA.BLL.DataStructures.LinkedList.SinglyLinkedList;
-using DSA.Entity.DataStructures;
 
 namespace DSA.ConsoleApp.DataStructures.LinkedList.SinglyLinkedList
 {

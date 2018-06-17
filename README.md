@@ -9,4 +9,9 @@
 	1. Singly Linked List
 	2. Doubly Linked List
 	3. Circular Linked List
+### Stack
+	1. Fixed Stack
+	2. Expanded Stack
+	
+		
  

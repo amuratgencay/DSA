@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DSA.Entity.DataStructures;
 
 namespace DSA.BLL.DataStructures.LinkedList
 {
@@ -50,10 +49,9 @@ namespace DSA.BLL.DataStructures.LinkedList
 
     public abstract class LinkedCluster<T> : IExpandedCluster<T>
     {
-        protected int _count;
         public abstract T this[int index] { get; set; }
 
-        public int Count => _count;
+        public int Count { get; protected set; }
 
         public abstract bool Contains(T item);
         public abstract int IndexOf(T item);

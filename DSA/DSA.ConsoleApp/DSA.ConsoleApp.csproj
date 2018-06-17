@@ -47,6 +47,8 @@
     <Compile Include="DataStructures\LinkedList\CircularLinkedList\CircularLinkedListExample.cs" />
     <Compile Include="DataStructures\LinkedList\DoublyLinkedList\DoublyLinkedListExample.cs" />
     <Compile Include="DataStructures\LinkedList\SinglyLinkedList\SinglyLinkedListExample.cs" />
+    <Compile Include="DataStructures\Stack\ExpandedStackExample.cs" />
+    <Compile Include="DataStructures\Stack\FixedStackExample.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,10 +59,6 @@
     <ProjectReference Include="..\DSA.BLL\DSA.BLL.csproj">
       <Project>{f787e290-732b-4cc4-9607-732a9aef16ce}</Project>
       <Name>DSA.BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DSA.Entity\DSA.Entity.csproj">
-      <Project>{85642c07-a2dc-4322-a101-e668e24f17e8}</Project>
-      <Name>DSA.Entity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
