@@ -5,7 +5,7 @@ using DSA.Entity.DataStructures;
 
 namespace DSA.BLL.DataStructures.LinkedList.SinglyLinkedList
 {
-    public class SinglyLinkedCluster<T> : ICluster<T>
+    public class SinglyLinkedCluster<T> : IExpandedCluster<T>
     {
         private int _count;
         private Node<T> _first, _last;

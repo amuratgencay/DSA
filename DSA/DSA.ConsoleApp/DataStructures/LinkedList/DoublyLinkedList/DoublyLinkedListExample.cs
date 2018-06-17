@@ -8,7 +8,7 @@ namespace DSA.ConsoleApp.DataStructures.LinkedList.DoublyLinkedList
     {
         public static void Run()
         {
-            ICluster<int> cluster = new DoublyLinkedCluster<int>();
+            IExpandedCluster<int> cluster = new DoublyLinkedCluster<int>();
 
             Console.WriteLine("<Doubly Linked List>");
             Console.WriteLine();
