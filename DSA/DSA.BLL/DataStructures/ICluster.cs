@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DSA.Entity.DataStructures
+namespace DSA.BLL.DataStructures
 {
     public interface ICluster<T>
     {

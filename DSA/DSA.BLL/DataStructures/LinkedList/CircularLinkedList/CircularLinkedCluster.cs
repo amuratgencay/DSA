@@ -11,16 +11,16 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
         {
             get
             {
-                if (index >= _count)
-                    throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
+                if (index >= Count)
+                    throw new IndexOutOfRangeException("Index grater or equal count.");
                 var item = _first;
                 for (var i = 0; i < index; i++) item++;
                 return item.Item;
             }
             set
             {
-                if (index >= _count)
-                    throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
+                if (index >= Count)
+                    throw new IndexOutOfRangeException("Index grater or equal count.");
                 var item = _first;
                 for (var i = 0; i < index; i++) item++;
 
@@ -46,13 +46,13 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
             _last.Next = _first;
             _first.Prev = _last;
 
-            _count++;
+            Count++;
         }
 
         public override void Insert(int index, T item)
         {
-            if (index >= _count)
-                throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
+            if (index >= Count)
+                throw new IndexOutOfRangeException("Index grater or equal count.");
             var p = _first;
             var prev = _first;
             var n = new DoublyNode<T>(item);
@@ -86,13 +86,13 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
                 n.Next = p;
             }
 
-            _count++;
+            Count++;
         }
 
         public override bool RemoveAt(int index)
         {
-            if (index >= _count)
-                throw new ArgumentOutOfRangeException(nameof(index), "index grater or equal count");
+            if (index >= Count)
+                throw new IndexOutOfRangeException("Index grater or equal count.");
             var item = _first;
             var prev = _first;
             for (var i = 0; i < index; i++)
@@ -121,14 +121,14 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
                 item.Prev = null;
             }
 
-            _count--;
+            Count--;
             return true;
         }
 
         public override bool Contains(T item)
         {
             var p = _first;
-            for (var i = 0; i < _count; i++)
+            for (var i = 0; i < Count; i++)
             {
                 if (p.Item.Equals(item))
                     return true;
@@ -141,7 +141,7 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
         public override int IndexOf(T item)
         {
             var p = _first;
-            for (var i = 0; i < _count; i++)
+            for (var i = 0; i < Count; i++)
             {
                 if (p.Item.Equals(item))
                     return i;
@@ -153,7 +153,7 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
 
         public override void Reverse()
         {
-            for (int i = 0, j = _count - 1; i < j; i++, j--)
+            for (int i = 0, j = Count - 1; i < j; i++, j--)
             {
                 var p = _first;
                 for (var k = 0; k < i; k++) p++;
@@ -180,13 +180,13 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
             }
 
             _first = _last = null;
-            _count = 0;
+            Count = 0;
         }
 
         public override IEnumerable<T> ToEnumerable()
         {
             var p = _first;
-            for (var i = 0; i < _count; i++)
+            for (var i = 0; i < Count; i++)
             {
                 yield return p.Item;
                 p++;

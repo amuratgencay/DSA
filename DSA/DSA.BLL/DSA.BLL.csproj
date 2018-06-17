@@ -42,17 +42,16 @@
   <ItemGroup>
     <Compile Include="DataStructures\Array\Vector.cs" />
     <Compile Include="DataStructures\Array\Sequence.cs" />
+    <Compile Include="DataStructures\ICluster.cs" />
     <Compile Include="DataStructures\LinkedList\CircularLinkedList\CircularLinkedCluster.cs" />
     <Compile Include="DataStructures\LinkedList\DoublyLinkedList\DoublyLinkedCluster.cs" />
     <Compile Include="DataStructures\LinkedList\LinkedCluster.cs" />
     <Compile Include="DataStructures\LinkedList\SinglyLinkedList\SinglyLinkedCluster.cs" />
+    <Compile Include="DataStructures\Stack\ExpandedStack.cs" />
+    <Compile Include="DataStructures\Stack\FixedStack.cs" />
+    <Compile Include="DataStructures\Stack\IStack.cs" />
+    <Compile Include="DataStructures\Stack\Stack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DSA.Entity\DSA.Entity.csproj">
-      <Project>{85642c07-a2dc-4322-a101-e668e24f17e8}</Project>
-      <Name>DSA.Entity</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

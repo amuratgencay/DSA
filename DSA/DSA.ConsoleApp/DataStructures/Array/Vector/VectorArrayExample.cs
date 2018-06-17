@@ -1,6 +1,6 @@
 ﻿using System;
+using DSA.BLL.DataStructures;
 using DSA.BLL.DataStructures.Array;
-using DSA.Entity.DataStructures;
 
 namespace DSA.ConsoleApp.DataStructures.Array.Vector
 {
