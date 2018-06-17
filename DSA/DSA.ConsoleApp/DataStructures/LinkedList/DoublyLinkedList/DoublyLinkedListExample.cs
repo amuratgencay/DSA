@@ -1,17 +1,16 @@
 ﻿using System;
-using DSA.BLL.DataStructures.LinkedList.SinglyLinkedList;
+using DSA.BLL.DataStructures.LinkedList.DoublyLinkedList;
 using DSA.Entity.DataStructures;
 
-namespace DSA.ConsoleApp.DataStructures.LinkedList.SinglyLinkedList
+namespace DSA.ConsoleApp.DataStructures.LinkedList.DoublyLinkedList
 {
-    public static class SinglyLinkedListExample
+    public static class DoublyLinkedListExample
     {
         public static void Run()
         {
-            ICluster<int> cluster = new SinglyLinkedCluster<int>();
+            ICluster<int> cluster = new DoublyLinkedCluster<int>();
 
-
-            Console.WriteLine("<Singly Linked List>");
+            Console.WriteLine("<Doubly Linked List>");
             Console.WriteLine();
             cluster.Add(2);
             cluster.Add(3);
@@ -51,7 +50,7 @@ namespace DSA.ConsoleApp.DataStructures.LinkedList.SinglyLinkedList
             cluster.Add(13);
             Console.WriteLine("\tAdd -> " + cluster);
             Console.WriteLine();
-            Console.WriteLine("</Singly Linked List>");
+            Console.WriteLine("</Doubly Linked List>");
             Console.WriteLine();
         }
     }

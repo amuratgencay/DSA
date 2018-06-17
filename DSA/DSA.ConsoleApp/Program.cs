@@ -1,4 +1,6 @@
 ﻿using System;
+using DSA.ConsoleApp.DataStructures.LinkedList.CircularLinkedList;
+using DSA.ConsoleApp.DataStructures.LinkedList.DoublyLinkedList;
 using DSA.ConsoleApp.DataStructures.LinkedList.SinglyLinkedList;
 
 namespace DSA.ConsoleApp
@@ -9,6 +11,8 @@ namespace DSA.ConsoleApp
         {
             Console.WriteLine("*******************Linked List*******************\n");
             SinglyLinkedListExample.Run();
+            DoublyLinkedListExample.Run();
+            CircularLinkedListExample.Run();
         }
     }
 }
