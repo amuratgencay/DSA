@@ -47,7 +47,7 @@ namespace DSA.BLL.DataStructures.LinkedList
         }
     }
 
-    public abstract class LinkedCluster<T> : IExpandedCluster<T>
+    public abstract class LinkedCountable<T>
     {
         public abstract T this[int index] { get; set; }
 
@@ -57,7 +57,7 @@ namespace DSA.BLL.DataStructures.LinkedList
         public abstract int IndexOf(T item);
         public abstract void Reverse();
         public abstract void Clear();
-        public abstract IEnumerable<T> ToEnumerable();
+        public abstract IEnumerable<T> GetEnumerable();
         public abstract void Add(T item);
         public abstract void Insert(int index, T item);
 
@@ -70,7 +70,8 @@ namespace DSA.BLL.DataStructures.LinkedList
 
         public override string ToString()
         {
-            return "{ " + ToEnumerable().Aggregate("", (x, y) => x + (!string.IsNullOrEmpty(x) ? ", " : "") + y) + " }";
+            return "{ " + GetEnumerable().Aggregate("", (x, y) => x + (!string.IsNullOrEmpty(x) ? ", " : "") + y) +
+                   " }";
         }
     }
 }

@@ -7,7 +7,7 @@ namespace DSA.ConsoleApp.DataStructures.Stack
     {
         public static void Run()
         {
-            Stack<int> cluster = new FixedStack<int>(5);
+            var cluster = new FixedStack<int>(5);
 
             Console.WriteLine("<Fixed Stack>");
             Console.WriteLine();

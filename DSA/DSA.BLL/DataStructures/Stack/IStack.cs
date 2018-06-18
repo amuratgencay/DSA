@@ -1,6 +1,6 @@
 ﻿namespace DSA.BLL.DataStructures.Stack
 {
-    public interface IStack<T> : ICluster<T>
+    public interface IStack<T> : ICountable<T>
     {
         bool IsEmpty { get; }
         bool IsFull { get; }

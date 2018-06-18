@@ -1,85 +1,45 @@
-﻿using DSA.BLL.DataStructures.LinkedList.SinglyLinkedList;
-using DSA.BLL.DataStructures.Queue;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using DSA.BLL.DataStructures.Array;
 
-namespace DSA.BLL.DataStructures.Stack
+namespace DSA.BLL.DataStructures.Queue
 {
-    public class ExpandedQueue<T> : DSA.BLL.DataStructures.Queue.Queue<T>
+    public class ExpandedQueue<T> : Vector<T>, IQueue<T>
     {
-        private readonly SinglyLinkedCluster<T> _list;
-
         public ExpandedQueue()
         {
-            _list = new SinglyLinkedCluster<T>();
-            Count = 0;
         }
 
-        public ExpandedQueue(int count)
+        public ExpandedQueue(int count) : base(count)
         {
-            _list = new SinglyLinkedCluster<T>();
-            for (var i = 0; i < count; i++) _list.Add(default(T));
-            Count = count;
-
         }
 
-        public override T this[int index]
+        public ExpandedQueue(int count, int factor) : base(count, factor)
         {
-            get => _list[index];
-            set => _list[index] = value;
         }
 
+        public bool IsEmpty => Count == 0;
+        public bool IsFull => Index >= Count;
 
-        public override bool Contains(T item)
+        public virtual void Enqueue(T item)
         {
-            return _list.Contains(item);
-        }
-
-        public override int IndexOf(T item)
-        {
-            return _list.IndexOf(item);
-        }
-
-        public override void Reverse()
-        {
-            _list.Reverse();
-        }
-
-        public override void Clear()
-        {
-            _list.Clear();
-            Count = 0;
-        }
-
-        public override IEnumerable<T> ToEnumerable()
-        {
-            return _list.ToEnumerable();
-        }
-
-        public override void Enqueue(T item)
-        {
-            _list.Add(item);
+            Add(item);
             Index++;
-            Count++;
-
         }
 
-        public override T Dequeue()
+        public virtual T Dequeue()
         {
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Stack is empty.");
-            var res = _list[0];
-            _list.RemoveAt(0);
-            Index--;
-            Count--;
+            var res = Array[0];
+            RemoveAt(0);
             return res;
         }
 
-        public override T Peek()
+        public virtual T Peek()
         {
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Stack is empty.");
-            return _list[0];
+            return Array[0];
         }
     }
 }

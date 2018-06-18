@@ -1,5 +1,4 @@
 ﻿using System;
-using DSA.BLL.DataStructures;
 using DSA.BLL.DataStructures.Array;
 
 namespace DSA.ConsoleApp.DataStructures.Array.Vector
@@ -8,47 +7,47 @@ namespace DSA.ConsoleApp.DataStructures.Array.Vector
     {
         public static void Run()
         {
-            IExpandedCluster<int> cluster = new Vector<int>(5);
+            var countable = new Vector<int>(8);
 
             Console.WriteLine("<Vector Array>");
             Console.WriteLine();
-            cluster.Add(2);
-            cluster.Add(3);
-            cluster.Add(5);
-            cluster.Add(8);
-            cluster.Add(13);
-            Console.WriteLine("\tAdd -> " + cluster);
+            countable.Add(2);
+            countable.Add(3);
+            countable.Add(5);
+            countable.Add(8);
+            countable.Add(13);
+            Console.WriteLine("\tAdd -> " + countable);
             Console.WriteLine();
-            cluster.Insert(2, 7);
-            Console.WriteLine("\tInsert -> (2,7): " + cluster);
+            countable.Insert(2, 7);
+            Console.WriteLine("\tInsert -> (2,7): " + countable);
             Console.WriteLine();
-            cluster.Remove(7);
-            Console.WriteLine("\tRemove -> (7): " + cluster);
+            countable.Remove(7);
+            Console.WriteLine("\tRemove -> (7): " + countable);
             Console.WriteLine();
-            cluster.RemoveAt(3);
-            Console.WriteLine("\tRemoveAt -> (3) " + cluster);
+            countable.RemoveAt(3);
+            Console.WriteLine("\tRemoveAt -> (3) " + countable);
             Console.WriteLine();
-            Console.WriteLine("\tContains -> (8): " + cluster.Contains(8));
+            Console.WriteLine("\tContains -> (8): " + countable.Contains(8));
             Console.WriteLine();
-            Console.WriteLine("\tIndexOf -> (13): " + cluster.IndexOf(13));
+            Console.WriteLine("\tIndexOf -> (13): " + countable.IndexOf(13));
             Console.WriteLine();
-            cluster.Reverse();
-            Console.WriteLine("\tReverse -> " + cluster);
+            countable.Reverse();
+            Console.WriteLine("\tReverse -> " + countable);
             Console.WriteLine();
-            Console.WriteLine("\tCount -> " + cluster.Count);
+            Console.WriteLine("\tCount -> " + countable.Count);
             Console.WriteLine();
-            cluster[1] = 21;
-            Console.WriteLine("\tSet[1] = 21 -> " + cluster);
+            countable[1] = 21;
+            Console.WriteLine("\tSet[1] = 21 -> " + countable);
             Console.WriteLine();
-            Console.WriteLine("\tGet[2] -> " + cluster[2]);
+            Console.WriteLine("\tGet[2] -> " + countable[2]);
             Console.WriteLine();
-            cluster.Clear();
-            Console.WriteLine("\tClear -> " + cluster);
+            countable.Clear();
+            Console.WriteLine("\tClear -> " + countable);
             Console.WriteLine();
-            cluster.Add(5);
-            cluster.Add(8);
-            cluster.Add(13);
-            Console.WriteLine("\tAdd -> " + cluster);
+            countable.Add(5);
+            countable.Add(8);
+            countable.Add(13);
+            Console.WriteLine("\tAdd -> " + countable);
             Console.WriteLine();
             Console.WriteLine("</Vector Array>");
             Console.WriteLine();
