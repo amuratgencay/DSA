@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DSA.BLL.DataStructures.Stack
+namespace DSA.BLL.DataStructures.Queue
 {
-    public abstract class Stack<T> : IStack<T>
+    public abstract class Queue<T> : IQueue<T>
     {
         protected int Index;
         public abstract T this[int index] { get; set; }
@@ -13,8 +13,6 @@ namespace DSA.BLL.DataStructures.Stack
         public abstract void Reverse();
         public abstract void Clear();
         public abstract IEnumerable<T> ToEnumerable();
-        public abstract void Push(T item);
-        public abstract T Pop();
         public abstract T Peek();
         public bool IsEmpty => Count == 0;
         public bool IsFull => Index >= Count;
@@ -23,5 +21,9 @@ namespace DSA.BLL.DataStructures.Stack
         {
             return "{ " + ToEnumerable().Aggregate("", (x, y) => x + (!string.IsNullOrEmpty(x) ? ", " : "") + y) + " }";
         }
+
+        public abstract void Enqueue(T item);
+        public abstract T Dequeue();
     }
+
 }

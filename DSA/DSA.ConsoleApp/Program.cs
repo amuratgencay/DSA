@@ -19,7 +19,9 @@ namespace DSA.ConsoleApp
                 Console.WriteLine("╠═════════════════════════╦═════════════════════════╦═════════════════════════╦═════════════════════════╣");
                 Console.WriteLine("║       1. Array          ║       2. Vector         ║ 3. Singly Linked List   ║   4. Doubly Linked List ║");
                 Console.WriteLine("╠═════════════════════════╬═════════════════════════╬═════════════════════════╬═════════════════════════╣");
-                Console.WriteLine("║ 5. Circular Linked List ║    6. Fixed Stack       ║  7. Expanded Stack      ║         X. Exit         ║");
+                Console.WriteLine("║ 5. Circular Linked List ║    6. Fixed Stack       ║  7. Expanded Stack      ║     8. Fixed Queue      ║");
+                Console.WriteLine("╠═════════════════════════╬═════════════════════════╬═════════════════════════╬═════════════════════════╣");
+                Console.WriteLine("║   9. Expanded Queue     ║                         ║                         ║        X. Exit          ║");
                 Console.WriteLine("╚═════════════════════════╩═════════════════════════╩═════════════════════════╩═════════════════════════╝");
                 var choice = char.ToLower(Console.ReadKey().KeyChar);
                 Console.Clear();
@@ -45,6 +47,12 @@ namespace DSA.ConsoleApp
                         break;
                     case '7':
                         ExpandedStackExample.Run();
+                        break;
+                    case '8':
+                        FixedQueueExample.Run();
+                        break;
+                    case '9':
+                        ExpandedQueueExample.Run();
                         break;
                     case 'x':
                         return;
