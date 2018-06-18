@@ -12,6 +12,8 @@
 ### Stack
 	1. Fixed Stack
 	2. Expanded Stack
+### Queue
+	1. Fixed Queue
+	2. Expanded Queue
 	
-		
  

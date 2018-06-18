@@ -1,24 +1,26 @@
-﻿using System;
+﻿using DSA.BLL.DataStructures.LinkedList.SinglyLinkedList;
+using DSA.BLL.DataStructures.Queue;
+using System;
 using System.Collections.Generic;
-using DSA.BLL.DataStructures.LinkedList.SinglyLinkedList;
 
 namespace DSA.BLL.DataStructures.Stack
 {
-    public class ExpandedStack<T> : Stack<T>
+    public class ExpandedQueue<T> : DSA.BLL.DataStructures.Queue.Queue<T>
     {
         private readonly SinglyLinkedCluster<T> _list;
 
-        public ExpandedStack()
+        public ExpandedQueue()
         {
             _list = new SinglyLinkedCluster<T>();
             Count = 0;
         }
 
-        public ExpandedStack(int count)
+        public ExpandedQueue(int count)
         {
             _list = new SinglyLinkedCluster<T>();
             for (var i = 0; i < count; i++) _list.Add(default(T));
             Count = count;
+
         }
 
         public override T this[int index]
@@ -54,19 +56,20 @@ namespace DSA.BLL.DataStructures.Stack
             return _list.ToEnumerable();
         }
 
-        public override void Push(T item)
+        public override void Enqueue(T item)
         {
             _list.Add(item);
             Index++;
             Count++;
+
         }
 
-        public override T Pop()
+        public override T Dequeue()
         {
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Stack is empty.");
-            var res = _list[_list.Count - 1];
-            _list.RemoveAt(_list.Count - 1);
+            var res = _list[0];
+            _list.RemoveAt(0);
             Index--;
             Count--;
             return res;

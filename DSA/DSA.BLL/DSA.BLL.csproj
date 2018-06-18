@@ -47,6 +47,10 @@
     <Compile Include="DataStructures\LinkedList\DoublyLinkedList\DoublyLinkedCluster.cs" />
     <Compile Include="DataStructures\LinkedList\LinkedCluster.cs" />
     <Compile Include="DataStructures\LinkedList\SinglyLinkedList\SinglyLinkedCluster.cs" />
+    <Compile Include="DataStructures\Queue\ExpandedQueue.cs" />
+    <Compile Include="DataStructures\Queue\FixedQueue.cs" />
+    <Compile Include="DataStructures\Queue\IQueue.cs" />
+    <Compile Include="DataStructures\Queue\Queue.cs" />
     <Compile Include="DataStructures\Stack\ExpandedStack.cs" />
     <Compile Include="DataStructures\Stack\FixedStack.cs" />
     <Compile Include="DataStructures\Stack\IStack.cs" />

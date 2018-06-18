@@ -47,6 +47,8 @@
     <Compile Include="DataStructures\LinkedList\CircularLinkedList\CircularLinkedListExample.cs" />
     <Compile Include="DataStructures\LinkedList\DoublyLinkedList\DoublyLinkedListExample.cs" />
     <Compile Include="DataStructures\LinkedList\SinglyLinkedList\SinglyLinkedListExample.cs" />
+    <Compile Include="DataStructures\Queue\ExpandedQueueExample.cs" />
+    <Compile Include="DataStructures\Queue\FixedQueueExample.cs" />
     <Compile Include="DataStructures\Stack\ExpandedStackExample.cs" />
     <Compile Include="DataStructures\Stack\FixedStackExample.cs" />
     <Compile Include="Program.cs" />
