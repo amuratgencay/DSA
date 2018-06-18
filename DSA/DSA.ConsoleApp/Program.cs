@@ -14,15 +14,24 @@ namespace DSA.ConsoleApp
         {
             while (true)
             {
-                Console.WriteLine("╔═══════════════════════════════════════════════════════════════════════════════════════════════════════╗");
-                Console.WriteLine("║                                    Data Structures and Algorithms                                     ║");
-                Console.WriteLine("╠═════════════════════════╦═════════════════════════╦═════════════════════════╦═════════════════════════╣");
-                Console.WriteLine("║       1. Array          ║       2. Vector         ║ 3. Singly Linked List   ║   4. Doubly Linked List ║");
-                Console.WriteLine("╠═════════════════════════╬═════════════════════════╬═════════════════════════╬═════════════════════════╣");
-                Console.WriteLine("║ 5. Circular Linked List ║    6. Fixed Stack       ║  7. Expanded Stack      ║     8. Fixed Queue      ║");
-                Console.WriteLine("╠═════════════════════════╬═════════════════════════╬═════════════════════════╬═════════════════════════╣");
-                Console.WriteLine("║   9. Expanded Queue     ║                         ║                         ║        X. Exit          ║");
-                Console.WriteLine("╚═════════════════════════╩═════════════════════════╩═════════════════════════╩═════════════════════════╝");
+                Console.WriteLine(
+                    "╔═══════════════════════════════════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine(
+                    "║                                    Data Structures and Algorithms                                     ║");
+                Console.WriteLine(
+                    "╠═════════════════════════╦═════════════════════════╦═════════════════════════╦═════════════════════════╣");
+                Console.WriteLine(
+                    "║       1. Array          ║       2. Vector         ║ 3. Singly Linked List   ║   4. Doubly Linked List ║");
+                Console.WriteLine(
+                    "╠═════════════════════════╬═════════════════════════╬═════════════════════════╬═════════════════════════╣");
+                Console.WriteLine(
+                    "║ 5. Circular Linked List ║    6. Fixed Stack       ║  7. Expanded Stack      ║     8. Fixed Queue      ║");
+                Console.WriteLine(
+                    "╠═════════════════════════╬═════════════════════════╬═════════════════════════╬═════════════════════════╣");
+                Console.WriteLine(
+                    "║   9. Expanded Queue     ║                         ║                         ║        X. Exit          ║");
+                Console.WriteLine(
+                    "╚═════════════════════════╩═════════════════════════╩═════════════════════════╩═════════════════════════╝");
                 var choice = char.ToLower(Console.ReadKey().KeyChar);
                 Console.Clear();
                 switch (choice)

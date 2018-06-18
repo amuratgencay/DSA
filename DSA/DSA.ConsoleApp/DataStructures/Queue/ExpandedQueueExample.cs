@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DSA.BLL.DataStructures.Queue;
 
 namespace DSA.ConsoleApp.DataStructures.Stack
@@ -10,7 +7,7 @@ namespace DSA.ConsoleApp.DataStructures.Stack
     {
         public static void Run()
         {
-            Queue<int> cluster = new BLL.DataStructures.Stack.ExpandedQueue<int>();
+            var cluster = new ExpandedQueue<int>();
 
             Console.WriteLine("<Expanded Stack>");
             Console.WriteLine();

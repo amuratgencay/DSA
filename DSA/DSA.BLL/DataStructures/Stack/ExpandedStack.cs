@@ -1,82 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
-using DSA.BLL.DataStructures.LinkedList.SinglyLinkedList;
 
 namespace DSA.BLL.DataStructures.Stack
 {
-    public class ExpandedStack<T> : Stack<T>
+    public class ExpandedStack<T> : ExpandedCountableArray<T>, IStack<T>
     {
-        private readonly SinglyLinkedCluster<T> _list;
-
         public ExpandedStack()
         {
-            _list = new SinglyLinkedCluster<T>();
-            Count = 0;
         }
 
-        public ExpandedStack(int count)
+        public ExpandedStack(int count) : base(count)
         {
-            _list = new SinglyLinkedCluster<T>();
-            for (var i = 0; i < count; i++) _list.Add(default(T));
-            Count = count;
         }
 
-        public override T this[int index]
+        public ExpandedStack(int count, int factor) : base(count, factor)
         {
-            get => _list[index];
-            set => _list[index] = value;
         }
 
+        public bool IsEmpty => Count == 0;
+        public bool IsFull => Index >= Count;
 
-        public override bool Contains(T item)
+        public virtual void Push(T item)
         {
-            return _list.Contains(item);
-        }
-
-        public override int IndexOf(T item)
-        {
-            return _list.IndexOf(item);
-        }
-
-        public override void Reverse()
-        {
-            _list.Reverse();
-        }
-
-        public override void Clear()
-        {
-            _list.Clear();
-            Count = 0;
-        }
-
-        public override IEnumerable<T> ToEnumerable()
-        {
-            return _list.ToEnumerable();
-        }
-
-        public override void Push(T item)
-        {
-            _list.Add(item);
+            Add(item);
             Index++;
-            Count++;
         }
 
-        public override T Pop()
+        public virtual T Pop()
         {
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Stack is empty.");
-            var res = _list[_list.Count - 1];
-            _list.RemoveAt(_list.Count - 1);
+            var res = Array[Count - 1];
+            RemoveAt(Count - 1);
             Index--;
-            Count--;
             return res;
         }
 
-        public override T Peek()
+        public virtual T Peek()
         {
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Stack is empty.");
-            return _list[0];
+            return Array[0];
         }
     }
 }

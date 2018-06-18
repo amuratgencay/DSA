@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DSA.BLL.DataStructures.LinkedList.SinglyLinkedList
+namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
 {
-    public class SinglyLinkedCluster<T> : LinkedCluster<T>
+    public class CircularLinkedCountable<T> : LinkedCountable<T>
     {
-        private SinglyNode<T> _first, _last;
+        private DoublyNode<T> _first, _last;
 
         public override T this[int index]
         {
@@ -30,7 +30,8 @@ namespace DSA.BLL.DataStructures.LinkedList.SinglyLinkedList
 
         public override void Add(T item)
         {
-            var n = new SinglyNode<T>(item);
+            var n = new DoublyNode<T>(item);
+
             if (_first == null)
             {
                 _first = _last = n;
@@ -38,8 +39,12 @@ namespace DSA.BLL.DataStructures.LinkedList.SinglyLinkedList
             else
             {
                 _last.Next = n;
+                _last.Next.Prev = _last;
                 _last = _last.Next;
             }
+
+            _last.Next = _first;
+            _first.Prev = _last;
 
             Count++;
         }
@@ -50,7 +55,7 @@ namespace DSA.BLL.DataStructures.LinkedList.SinglyLinkedList
                 throw new IndexOutOfRangeException("Index grater or equal count.");
             var p = _first;
             var prev = _first;
-            var n = new SinglyNode<T>(item);
+            var n = new DoublyNode<T>(item);
             for (var i = 0; i < index; i++)
             {
                 prev = p;
@@ -60,12 +65,20 @@ namespace DSA.BLL.DataStructures.LinkedList.SinglyLinkedList
             if (p == _first)
             {
                 n.Next = _first;
+                n.Next.Prev = n;
                 _first = n;
+
+                _last.Next = _first;
+                _first.Prev = _last;
             }
             else if (p == _last)
             {
                 _last.Next = n;
+                _last.Next.Prev = _last;
                 _last = n;
+
+                _last.Next = _first;
+                _first.Prev = _last;
             }
             else
             {
@@ -91,16 +104,21 @@ namespace DSA.BLL.DataStructures.LinkedList.SinglyLinkedList
             if (item == _first)
             {
                 _first = _first.Next;
+                _first.Prev = _last;
+                _last.Next = _first;
             }
             else if (item == _last)
             {
+                _last.Prev = null;
                 prev.Next = null;
                 _last = prev;
+                _last.Next = _first;
             }
             else
             {
                 prev.Next = item.Next;
                 item.Next = null;
+                item.Prev = null;
             }
 
             Count--;
@@ -109,20 +127,25 @@ namespace DSA.BLL.DataStructures.LinkedList.SinglyLinkedList
 
         public override bool Contains(T item)
         {
-            for (var i = _first; i != null; i++)
-                if (i.Item.Equals(item))
+            var p = _first;
+            for (var i = 0; i < Count; i++)
+            {
+                if (p.Item.Equals(item))
                     return true;
+                p++;
+            }
+
             return false;
         }
 
         public override int IndexOf(T item)
         {
-            var res = -1;
-            for (var i = _first; i != null; i++)
+            var p = _first;
+            for (var i = 0; i < Count; i++)
             {
-                res++;
-                if (i.Item.Equals(item))
-                    return res;
+                if (p.Item.Equals(item))
+                    return i;
+                p++;
             }
 
             return -1;
@@ -146,20 +169,28 @@ namespace DSA.BLL.DataStructures.LinkedList.SinglyLinkedList
 
         public override void Clear()
         {
-            for (var i = _first; i != null; i++)
+            var p = _first;
+
+            while (p != null)
             {
-                var item = i.Next;
-                i.Next = null;
-                i = item;
+                var item = p.Next;
+                p.Next = null;
+                p.Prev = null;
+                p = item;
             }
 
             _first = _last = null;
             Count = 0;
         }
 
-        public override IEnumerable<T> ToEnumerable()
+        public override IEnumerable<T> GetEnumerable()
         {
-            for (var i = _first; i != null; i++) yield return i.Item;
+            var p = _first;
+            for (var i = 0; i < Count; i++)
+            {
+                yield return p.Item;
+                p++;
+            }
         }
     }
 }

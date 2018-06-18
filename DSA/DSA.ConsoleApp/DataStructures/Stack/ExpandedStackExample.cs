@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DSA.BLL.DataStructures.Stack;
 
 namespace DSA.ConsoleApp.DataStructures.Stack
@@ -10,7 +7,7 @@ namespace DSA.ConsoleApp.DataStructures.Stack
     {
         public static void Run()
         {
-            Stack<int> cluster = new ExpandedStack<int>();
+            var cluster = new ExpandedStack<int>();
 
             Console.WriteLine("<Expanded Stack>");
             Console.WriteLine();

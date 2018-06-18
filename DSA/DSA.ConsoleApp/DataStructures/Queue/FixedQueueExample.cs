@@ -1,6 +1,5 @@
-﻿using DSA.BLL.DataStructures.Queue;
-using System;
-
+﻿using System;
+using DSA.BLL.DataStructures.Queue;
 
 namespace DSA.ConsoleApp.DataStructures.Stack
 {
@@ -8,7 +7,7 @@ namespace DSA.ConsoleApp.DataStructures.Stack
     {
         public static void Run()
         {
-            Queue<int> cluster = new FixedQueue<int>(5);
+            var cluster = new FixedQueue<int>(5);
 
             Console.WriteLine("<Fixed Queue>");
             Console.WriteLine();

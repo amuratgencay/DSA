@@ -1,9 +1,6 @@
-﻿using System.Text;
-using System.Threading.Tasks;
-
-namespace DSA.BLL.DataStructures.Queue
+﻿namespace DSA.BLL.DataStructures.Queue
 {
-    interface IQueue<T> : ICluster<T>
+    internal interface IQueue<T> : ICountable<T>
     {
         bool IsEmpty { get; }
         bool IsFull { get; }
@@ -11,5 +8,4 @@ namespace DSA.BLL.DataStructures.Queue
         T Dequeue();
         T Peek();
     }
-
 }

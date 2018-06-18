@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
+namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
 {
-    public class CircularLinkedCluster<T> : LinkedCluster<T>
+    public class DoublyLinkedCountable<T> : LinkedCountable<T>
     {
         private DoublyNode<T> _first, _last;
 
@@ -43,9 +43,6 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
                 _last = _last.Next;
             }
 
-            _last.Next = _first;
-            _first.Prev = _last;
-
             Count++;
         }
 
@@ -67,18 +64,12 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
                 n.Next = _first;
                 n.Next.Prev = n;
                 _first = n;
-
-                _last.Next = _first;
-                _first.Prev = _last;
             }
             else if (p == _last)
             {
                 _last.Next = n;
                 _last.Next.Prev = _last;
                 _last = n;
-
-                _last.Next = _first;
-                _first.Prev = _last;
             }
             else
             {
@@ -104,15 +95,13 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
             if (item == _first)
             {
                 _first = _first.Next;
-                _first.Prev = _last;
-                _last.Next = _first;
+                _first.Prev = null;
             }
             else if (item == _last)
             {
                 _last.Prev = null;
                 prev.Next = null;
                 _last = prev;
-                _last.Next = _first;
             }
             else
             {
@@ -127,25 +116,20 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
 
         public override bool Contains(T item)
         {
-            var p = _first;
-            for (var i = 0; i < Count; i++)
-            {
-                if (p.Item.Equals(item))
+            for (var i = _first; i != null; i++)
+                if (i.Item.Equals(item))
                     return true;
-                p++;
-            }
-
             return false;
         }
 
         public override int IndexOf(T item)
         {
-            var p = _first;
-            for (var i = 0; i < Count; i++)
+            var res = -1;
+            for (var i = _first; i != null; i++)
             {
-                if (p.Item.Equals(item))
-                    return i;
-                p++;
+                res++;
+                if (i.Item.Equals(item))
+                    return res;
             }
 
             return -1;
@@ -169,28 +153,20 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
 
         public override void Clear()
         {
-            var p = _first;
-
-            while (p != null)
+            for (var i = _first; i != null; i++)
             {
-                var item = p.Next;
-                p.Next = null;
-                p.Prev = null;
-                p = item;
+                var item = i.Next;
+                i.Next = null;
+                i = item;
             }
 
             _first = _last = null;
             Count = 0;
         }
 
-        public override IEnumerable<T> ToEnumerable()
+        public override IEnumerable<T> GetEnumerable()
         {
-            var p = _first;
-            for (var i = 0; i < Count; i++)
-            {
-                yield return p.Item;
-                p++;
-            }
+            for (var i = _first; i != null; i++) yield return i.Item;
         }
     }
 }
