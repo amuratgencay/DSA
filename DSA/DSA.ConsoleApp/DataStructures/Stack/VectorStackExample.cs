@@ -1,21 +1,21 @@
 ﻿using System;
-using DSA.BLL.DataStructures.Queue;
+using DSA.BLL.DataStructures.Stack;
 
 namespace DSA.ConsoleApp.DataStructures.Stack
 {
-    public class ExpandedQueueExample
+    public class VectorStackExample
     {
         public static void Run()
         {
-            var cluster = new ExpandedQueue<int>();
+            var cluster = new VectorStack<int>();
 
-            Console.WriteLine("<Expanded Stack>");
+            Console.WriteLine("<Vector Stack>");
             Console.WriteLine();
-            cluster.Enqueue(2);
-            cluster.Enqueue(3);
-            cluster.Enqueue(5);
-            cluster.Enqueue(8);
-            cluster.Enqueue(13);
+            cluster.Push(2);
+            cluster.Push(3);
+            cluster.Push(5);
+            cluster.Push(8);
+            cluster.Push(13);
             Console.WriteLine("\tPush -> " + cluster);
             Console.WriteLine();
             Console.WriteLine("\tContains -> (8): " + cluster.Contains(8));
@@ -26,7 +26,7 @@ namespace DSA.ConsoleApp.DataStructures.Stack
             Console.WriteLine();
             Console.WriteLine("\tIsFull -> " + cluster.IsFull);
             Console.WriteLine();
-            Console.WriteLine("\tPop -> " + cluster.Dequeue());
+            Console.WriteLine("\tPop -> " + cluster.Pop());
             Console.WriteLine();
             Console.WriteLine("\tDisplay -> " + cluster);
             Console.WriteLine();
@@ -45,12 +45,12 @@ namespace DSA.ConsoleApp.DataStructures.Stack
             Console.WriteLine();
             Console.WriteLine("\tIsEmpty -> " + cluster.IsEmpty);
             Console.WriteLine();
-            cluster.Enqueue(5);
-            cluster.Enqueue(8);
-            cluster.Enqueue(13);
+            cluster.Push(5);
+            cluster.Push(8);
+            cluster.Push(13);
             Console.WriteLine("\tPush -> " + cluster);
             Console.WriteLine();
-            Console.WriteLine("</Expanded Stack>");
+            Console.WriteLine("</Vector Stack>");
             Console.WriteLine();
         }
     }

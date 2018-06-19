@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
 {
-    public class CircularLinkedCountable<T> : LinkedCountable<T>
+    public class CircularLinkedList<T> : ICountable<T>
     {
-        private DoublyNode<T> _first, _last;
+        private DoublyLinkedList<T> _first, _last;
 
-        public override T this[int index]
+        public virtual T this[int index]
         {
             get
             {
@@ -28,9 +29,89 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
             }
         }
 
-        public override void Add(T item)
+        public virtual bool Contains(T item)
         {
-            var n = new DoublyNode<T>(item);
+            var p = _first;
+            for (var i = 0; i < Count; i++)
+            {
+                if (p.Item.Equals(item))
+                    return true;
+                p++;
+            }
+
+            return false;
+        }
+
+        public virtual int IndexOf(T item)
+        {
+            var p = _first;
+            for (var i = 0; i < Count; i++)
+            {
+                if (p.Item.Equals(item))
+                    return i;
+                p++;
+            }
+
+            return -1;
+        }
+
+        public virtual void Reverse(int startIndex = 0, int endIndex = 0)
+        {
+            if (startIndex >= Count || startIndex < 0)
+                startIndex = 0;
+            if (endIndex >= Count || endIndex <= 0)
+                endIndex = Count - 1;
+            if (startIndex >= endIndex)
+            {
+                startIndex = 0;
+                endIndex = Count - 1;
+            }
+
+            for (int i = startIndex, j = endIndex; i < j; i++, j--)
+            {
+                var p = _first;
+                for (var k = 0; k < i; k++) p++;
+
+                var q = _first;
+                for (var k = 0; k < j; k++) q++;
+
+                var tmp = p.Item;
+                p.Item = q.Item;
+                q.Item = tmp;
+            }
+        }
+
+        public int Count { get; protected set; }
+
+        public virtual void Clear()
+        {
+            var p = _first;
+
+            while (p != null)
+            {
+                var item = p.Next;
+                p.Next = null;
+                p.Prev = null;
+                p = item;
+            }
+
+            _first = _last = null;
+            Count = 0;
+        }
+
+        public virtual IEnumerable<T> GetEnumerable()
+        {
+            var p = _first;
+            for (var i = 0; i < Count; i++)
+            {
+                yield return p.Item;
+                p++;
+            }
+        }
+
+        public virtual void Add(T item)
+        {
+            var n = new DoublyLinkedList<T>(item);
 
             if (_first == null)
             {
@@ -49,13 +130,13 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
             Count++;
         }
 
-        public override void Insert(int index, T item)
+        public virtual void Insert(int index, T item)
         {
             if (index >= Count)
                 throw new IndexOutOfRangeException("Index grater or equal count.");
             var p = _first;
             var prev = _first;
-            var n = new DoublyNode<T>(item);
+            var n = new DoublyLinkedList<T>(item);
             for (var i = 0; i < index; i++)
             {
                 prev = p;
@@ -89,7 +170,12 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
             Count++;
         }
 
-        public override bool RemoveAt(int index)
+        public virtual bool Remove(T item)
+        {
+            return RemoveAt(IndexOf(item));
+        }
+
+        public virtual bool RemoveAt(int index)
         {
             if (index >= Count)
                 throw new IndexOutOfRangeException("Index grater or equal count.");
@@ -125,72 +211,10 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
             return true;
         }
 
-        public override bool Contains(T item)
+        public override string ToString()
         {
-            var p = _first;
-            for (var i = 0; i < Count; i++)
-            {
-                if (p.Item.Equals(item))
-                    return true;
-                p++;
-            }
-
-            return false;
-        }
-
-        public override int IndexOf(T item)
-        {
-            var p = _first;
-            for (var i = 0; i < Count; i++)
-            {
-                if (p.Item.Equals(item))
-                    return i;
-                p++;
-            }
-
-            return -1;
-        }
-
-        public override void Reverse()
-        {
-            for (int i = 0, j = Count - 1; i < j; i++, j--)
-            {
-                var p = _first;
-                for (var k = 0; k < i; k++) p++;
-
-                var q = _first;
-                for (var k = 0; k < j; k++) q++;
-
-                var tmp = p.Item;
-                p.Item = q.Item;
-                q.Item = tmp;
-            }
-        }
-
-        public override void Clear()
-        {
-            var p = _first;
-
-            while (p != null)
-            {
-                var item = p.Next;
-                p.Next = null;
-                p.Prev = null;
-                p = item;
-            }
-
-            _first = _last = null;
-            Count = 0;
-        }
-
-        public override IEnumerable<T> GetEnumerable()
-        {
-            var p = _first;
-            for (var i = 0; i < Count; i++)
-            {
-                yield return p.Item;
-                p++;
-            }
+            return "{ " + GetEnumerable().Aggregate("", (x, y) => x + (!string.IsNullOrEmpty(x) ? ", " : "") + y) +
+                   " }";
         }
     }
 }

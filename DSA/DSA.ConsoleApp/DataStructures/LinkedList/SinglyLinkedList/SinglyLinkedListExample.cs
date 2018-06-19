@@ -7,7 +7,7 @@ namespace DSA.ConsoleApp.DataStructures.LinkedList.SinglyLinkedList
     {
         public static void Run()
         {
-            var countable = new SinglyLinkedCountable<int>();
+            var countable = new SinglyLinkedList<int>();
 
 
             Console.WriteLine("<Singly Linked List>");

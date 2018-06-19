@@ -8,9 +8,9 @@ namespace DSA.ConsoleApp.DataStructures.Array.Sequence
     {
         public static void Run()
         {
-            ICountable<int> countable = new Sequence<int>(5);
+            ICountable<int> countable = new Array<int>(5);
 
-            Console.WriteLine("<Sequence Array>");
+            Console.WriteLine("<Sequential Array>");
             Console.WriteLine();
             Console.WriteLine("\tCreate -> " + countable);
             Console.WriteLine();
@@ -43,7 +43,7 @@ namespace DSA.ConsoleApp.DataStructures.Array.Sequence
             countable[2] = 13;
             Console.WriteLine("\tAdd -> " + countable);
             Console.WriteLine();
-            Console.WriteLine("</Sequence Array>");
+            Console.WriteLine("</Sequential Array>");
             Console.WriteLine();
         }
     }

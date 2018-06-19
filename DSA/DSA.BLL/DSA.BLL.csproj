@@ -41,17 +41,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataStructures\Array\Vector.cs" />
-    <Compile Include="DataStructures\Array\Sequence.cs" />
+    <Compile Include="DataStructures\Array\Array.cs" />
     <Compile Include="DataStructures\ICountable.cs" />
-    <Compile Include="DataStructures\LinkedList\CircularLinkedList\CircularLinkedCountable.cs" />
+    <Compile Include="DataStructures\LinkedList\CircularLinkedList\CircularLinkedList.cs" />
     <Compile Include="DataStructures\LinkedList\DoublyLinkedList\DoublyLinkedCountable.cs" />
-    <Compile Include="DataStructures\LinkedList\LinkedCountable.cs" />
-    <Compile Include="DataStructures\LinkedList\SinglyLinkedList\SinglyLinkedCountable.cs" />
-    <Compile Include="DataStructures\Queue\ExpandedQueue.cs" />
-    <Compile Include="DataStructures\Queue\FixedQueue.cs" />
+    <Compile Include="DataStructures\LinkedList\DoublyLinkedList.cs" />
+    <Compile Include="DataStructures\LinkedList\SinglyLinkedList\SinglyLinkedList.cs" />
+    <Compile Include="DataStructures\LinkedList\SinglyListItem.cs" />
+    <Compile Include="DataStructures\Queue\ListQueue.cs" />
+    <Compile Include="DataStructures\Queue\VectorQueue.cs" />
+    <Compile Include="DataStructures\Queue\ArrayQueue.cs" />
     <Compile Include="DataStructures\Queue\IQueue.cs" />
-    <Compile Include="DataStructures\Stack\ExpandedStack.cs" />
-    <Compile Include="DataStructures\Stack\FixedStack.cs" />
+    <Compile Include="DataStructures\Stack\ListStack.cs" />
+    <Compile Include="DataStructures\Stack\VectorStack.cs" />
+    <Compile Include="DataStructures\Stack\ArrayStack.cs" />
     <Compile Include="DataStructures\Stack\IStack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
