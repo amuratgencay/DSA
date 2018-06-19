@@ -1,21 +1,21 @@
 ﻿using System;
-using DSA.BLL.DataStructures.Stack;
+using DSA.BLL.DataStructures.Queue;
 
-namespace DSA.ConsoleApp.DataStructures.Stack
+namespace DSA.ConsoleApp.DataStructures.Queue
 {
-    public static class FixedStackExample
+    public class VectorQueueExample
     {
         public static void Run()
         {
-            var cluster = new FixedStack<int>(5);
+            var cluster = new VectorQueue<int>();
 
-            Console.WriteLine("<Fixed Stack>");
+            Console.WriteLine("<Vector Queue>");
             Console.WriteLine();
-            cluster.Push(2);
-            cluster.Push(3);
-            cluster.Push(5);
-            cluster.Push(8);
-            cluster.Push(13);
+            cluster.Enqueue(2);
+            cluster.Enqueue(3);
+            cluster.Enqueue(5);
+            cluster.Enqueue(8);
+            cluster.Enqueue(13);
             Console.WriteLine("\tPush -> " + cluster);
             Console.WriteLine();
             Console.WriteLine("\tContains -> (8): " + cluster.Contains(8));
@@ -26,7 +26,7 @@ namespace DSA.ConsoleApp.DataStructures.Stack
             Console.WriteLine();
             Console.WriteLine("\tIsFull -> " + cluster.IsFull);
             Console.WriteLine();
-            Console.WriteLine("\tPop -> " + cluster.Pop());
+            Console.WriteLine("\tPop -> " + cluster.Dequeue());
             Console.WriteLine();
             Console.WriteLine("\tDisplay -> " + cluster);
             Console.WriteLine();
@@ -45,12 +45,12 @@ namespace DSA.ConsoleApp.DataStructures.Stack
             Console.WriteLine();
             Console.WriteLine("\tIsEmpty -> " + cluster.IsEmpty);
             Console.WriteLine();
-            cluster.Push(5);
-            cluster.Push(8);
-            cluster.Push(13);
+            cluster.Enqueue(5);
+            cluster.Enqueue(8);
+            cluster.Enqueue(13);
             Console.WriteLine("\tPush -> " + cluster);
             Console.WriteLine();
-            Console.WriteLine("</Fixed Stack>");
+            Console.WriteLine("</Vector Queue>");
             Console.WriteLine();
         }
     }

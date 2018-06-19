@@ -3,29 +3,26 @@ using DSA.BLL.DataStructures.Array;
 
 namespace DSA.BLL.DataStructures.Stack
 {
-    public class FixedStack<T> : Sequence<T>, IStack<T>
+    public class VectorStack<T> : Vector<T>, IStack<T>
     {
-        protected int Index;
-
-        public FixedStack(int count) : base(count)
+        public VectorStack()
         {
         }
 
-        public override void Clear()
+        public VectorStack(int count) : base(count)
         {
-            base.Clear();
-            Index = 0;
         }
 
-        public bool IsEmpty => Count == 0;
+        public VectorStack(int count, int factor) : base(count, factor)
+        {
+        }
+
+        public bool IsEmpty => Index <= 0;
         public bool IsFull => Index >= Count;
 
         public virtual void Push(T item)
         {
-            if (IsFull)
-                throw new IndexOutOfRangeException("Stack is full.");
-
-            Array[Index++] = item;
+            Add(item);
         }
 
         public virtual T Pop()
@@ -33,10 +30,8 @@ namespace DSA.BLL.DataStructures.Stack
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Stack is empty.");
             Index--;
-
             var res = Array[Index];
-            Array[Index] = default(T);
-
+            RemoveAt(Index);
             return res;
         }
 
@@ -45,6 +40,11 @@ namespace DSA.BLL.DataStructures.Stack
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Stack is empty.");
             return Array[0];
+        }
+
+        public override void Reverse(int startIndex = 0, int endIndex = 0)
+        {
+            base.Reverse(startIndex, Index - 1);
         }
     }
 }

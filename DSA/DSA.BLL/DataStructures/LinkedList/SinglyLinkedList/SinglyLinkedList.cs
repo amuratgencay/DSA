@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
+namespace DSA.BLL.DataStructures.LinkedList.SinglyLinkedList
 {
-    public class DoublyLinkedCountable<T> : ICountable<T>
+    public class SinglyLinkedList<T> : ICountable<T>
     {
-        private DoublyLinkedList<T> _first, _last;
+        private SinglyListItem<T> _first, _last;
 
         public virtual T this[int index]
         {
@@ -98,8 +98,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
 
         public virtual void Add(T item)
         {
-            var n = new DoublyLinkedList<T>(item);
-
+            var n = new SinglyListItem<T>(item);
             if (_first == null)
             {
                 _first = _last = n;
@@ -107,7 +106,6 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
             else
             {
                 _last.Next = n;
-                _last.Next.Prev = _last;
                 _last = _last.Next;
             }
 
@@ -120,7 +118,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
                 throw new IndexOutOfRangeException("Index grater or equal count.");
             var p = _first;
             var prev = _first;
-            var n = new DoublyLinkedList<T>(item);
+            var n = new SinglyListItem<T>(item);
             for (var i = 0; i < index; i++)
             {
                 prev = p;
@@ -130,13 +128,11 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
             if (p == _first)
             {
                 n.Next = _first;
-                n.Next.Prev = n;
                 _first = n;
             }
             else if (p == _last)
             {
                 _last.Next = n;
-                _last.Next.Prev = _last;
                 _last = n;
             }
             else
@@ -168,11 +164,9 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
             if (item == _first)
             {
                 _first = _first.Next;
-                _first.Prev = null;
             }
             else if (item == _last)
             {
-                _last.Prev = null;
                 prev.Next = null;
                 _last = prev;
             }
@@ -180,7 +174,6 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
             {
                 prev.Next = item.Next;
                 item.Next = null;
-                item.Prev = null;
             }
 
             Count--;

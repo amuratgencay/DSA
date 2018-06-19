@@ -1,22 +1,22 @@
 ﻿using System;
 using DSA.BLL.DataStructures.Queue;
 
-namespace DSA.ConsoleApp.DataStructures.Stack
+namespace DSA.ConsoleApp.DataStructures.Queue
 {
-    public static class FixedQueueExample
+    public class ListQueueExample
     {
         public static void Run()
         {
-            var cluster = new FixedQueue<int>(5);
+            var cluster = new ListQueue<int>();
 
-            Console.WriteLine("<Fixed Queue>");
+            Console.WriteLine("<List Queue>");
             Console.WriteLine();
             cluster.Enqueue(2);
             cluster.Enqueue(3);
             cluster.Enqueue(5);
             cluster.Enqueue(8);
             cluster.Enqueue(13);
-            Console.WriteLine("\tEnqueue -> " + cluster);
+            Console.WriteLine("\tPush -> " + cluster);
             Console.WriteLine();
             Console.WriteLine("\tContains -> (8): " + cluster.Contains(8));
             Console.WriteLine();
@@ -26,7 +26,7 @@ namespace DSA.ConsoleApp.DataStructures.Stack
             Console.WriteLine();
             Console.WriteLine("\tIsFull -> " + cluster.IsFull);
             Console.WriteLine();
-            Console.WriteLine("\tDequeue -> " + cluster.Dequeue());
+            Console.WriteLine("\tPop -> " + cluster.Dequeue());
             Console.WriteLine();
             Console.WriteLine("\tDisplay -> " + cluster);
             Console.WriteLine();
@@ -48,9 +48,9 @@ namespace DSA.ConsoleApp.DataStructures.Stack
             cluster.Enqueue(5);
             cluster.Enqueue(8);
             cluster.Enqueue(13);
-            Console.WriteLine("\tEnqueue -> " + cluster);
+            Console.WriteLine("\tPush -> " + cluster);
             Console.WriteLine();
-            Console.WriteLine("</Fixed Queue>");
+            Console.WriteLine("</List Queue>");
             Console.WriteLine();
         }
     }

@@ -1,22 +1,22 @@
 ﻿using System;
-using DSA.BLL.DataStructures.Stack;
+using DSA.BLL.DataStructures.Queue;
 
-namespace DSA.ConsoleApp.DataStructures.Stack
+namespace DSA.ConsoleApp.DataStructures.Queue
 {
-    public class ExpandedStackExample
+    public static class ArrayQueueExample
     {
         public static void Run()
         {
-            var cluster = new ExpandedStack<int>();
+            var cluster = new ArrayQueue<int>(5);
 
-            Console.WriteLine("<Expanded Stack>");
+            Console.WriteLine("<Array Queue>");
             Console.WriteLine();
-            cluster.Push(2);
-            cluster.Push(3);
-            cluster.Push(5);
-            cluster.Push(8);
-            cluster.Push(13);
-            Console.WriteLine("\tPush -> " + cluster);
+            cluster.Enqueue(2);
+            cluster.Enqueue(3);
+            cluster.Enqueue(5);
+            cluster.Enqueue(8);
+            cluster.Enqueue(13);
+            Console.WriteLine("\tEnqueue -> " + cluster);
             Console.WriteLine();
             Console.WriteLine("\tContains -> (8): " + cluster.Contains(8));
             Console.WriteLine();
@@ -26,7 +26,7 @@ namespace DSA.ConsoleApp.DataStructures.Stack
             Console.WriteLine();
             Console.WriteLine("\tIsFull -> " + cluster.IsFull);
             Console.WriteLine();
-            Console.WriteLine("\tPop -> " + cluster.Pop());
+            Console.WriteLine("\tDequeue -> " + cluster.Dequeue());
             Console.WriteLine();
             Console.WriteLine("\tDisplay -> " + cluster);
             Console.WriteLine();
@@ -45,12 +45,12 @@ namespace DSA.ConsoleApp.DataStructures.Stack
             Console.WriteLine();
             Console.WriteLine("\tIsEmpty -> " + cluster.IsEmpty);
             Console.WriteLine();
-            cluster.Push(5);
-            cluster.Push(8);
-            cluster.Push(13);
-            Console.WriteLine("\tPush -> " + cluster);
+            cluster.Enqueue(5);
+            cluster.Enqueue(8);
+            cluster.Enqueue(13);
+            Console.WriteLine("\tEnqueue -> " + cluster);
             Console.WriteLine();
-            Console.WriteLine("</Expanded Stack>");
+            Console.WriteLine("</Array Queue>");
             Console.WriteLine();
         }
     }

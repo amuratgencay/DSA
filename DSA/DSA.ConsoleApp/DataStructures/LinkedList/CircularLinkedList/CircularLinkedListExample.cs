@@ -7,7 +7,7 @@ namespace DSA.ConsoleApp.DataStructures.LinkedList.CircularLinkedList
     {
         public static void Run()
         {
-            var countable = new CircularLinkedCountable<int>();
+            var countable = new CircularLinkedList<int>();
 
             Console.WriteLine("<Circular Linked List>");
             Console.WriteLine();
