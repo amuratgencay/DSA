@@ -52,6 +52,7 @@
     <Compile Include="DataStructures\Queue\VectorQueue.cs" />
     <Compile Include="DataStructures\Queue\ArrayQueue.cs" />
     <Compile Include="DataStructures\Queue\IQueue.cs" />
+    <Compile Include="DataStructures\Search\LinearSearch.cs" />
     <Compile Include="DataStructures\Stack\ListStack.cs" />
     <Compile Include="DataStructures\Stack\VectorStack.cs" />
     <Compile Include="DataStructures\Stack\ArrayStack.cs" />

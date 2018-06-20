@@ -1,41 +1,48 @@
 ﻿using System;
+using System.Collections.Generic;
 using DSA.BLL.DataStructures.Array;
 
 namespace DSA.BLL.DataStructures.Stack
 {
-    public class ArrayStack<T> : Array<T>, IStack<T>
+    public class ArrayStack<T> : IStack<T>
     {
-        protected int Index;
+        protected Array<T> array;
+        protected int index;
 
-        public ArrayStack(int count) : base(count)
+        public ArrayStack(int count) 
         {
+            array = new Array<T>(count);
         }
 
-        public override void Clear()
+        public void Clear()
         {
-            base.Clear();
-            Index = 0;
+            array.Clear();
+            index = 0;
         }
 
-        public bool IsEmpty => Index <= 0;
-        public bool IsFull => Index >= Count;
+        public bool IsEmpty => index <= 0;
+        public bool IsFull => index >= array.Count;
 
-        public virtual void Push(T item)
+        public int Count => array.Count;
+
+        public T this[int index] { get => array[index]; set => array[index] = value; }
+
+        public void Push(T item)
         {
             if (IsFull)
                 throw new IndexOutOfRangeException("Stack is full.");
 
-            Arr[Index++] = item;
+            array[index++] = item;
         }
 
         public virtual T Pop()
         {
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Stack is empty.");
-            Index--;
+            index--;
 
-            var res = Arr[Index];
-            Arr[Index] = default(T);
+            var res = array[index];
+            array[index] = default(T);
 
             return res;
         }
@@ -44,12 +51,20 @@ namespace DSA.BLL.DataStructures.Stack
         {
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Stack is empty.");
-            return Arr[0];
+            return array[0];
         }
 
-        public override void Reverse(int startIndex = 0, int endIndex = 0)
+        public void Reverse(int startIndex = 0, int endIndex = 0)
         {
-            base.Reverse(startIndex, Index - 1);
+            array.Reverse(startIndex, index - 1);
         }
+
+        public bool Contains(T item) => array.Contains(item);
+
+        public int IndexOf(T item) => array.IndexOf(item);
+
+        public IEnumerable<T> GetEnumerable() => array.GetEnumerable();
+
+        public override string ToString() => array.ToString();
     }
 }
