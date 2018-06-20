@@ -1,5 +1,6 @@
 ﻿using System;
 using DSA.BLL.DataStructures.Queue;
+using DSA.BLL.DataStructures.Search;
 
 namespace DSA.ConsoleApp.DataStructures.Queue
 {
@@ -7,47 +8,54 @@ namespace DSA.ConsoleApp.DataStructures.Queue
     {
         public static void Run()
         {
-            var cluster = new ArrayQueue<int>(5);            
+            var queue = new ArrayQueue<int>(5);
+
             Console.WriteLine("<Array Queue>");
             Console.WriteLine();
-            cluster.Enqueue(2);
-            cluster.Enqueue(3);
-            cluster.Enqueue(5);
-            cluster.Enqueue(8);
-            cluster.Enqueue(13);
-            Console.WriteLine("\tEnqueue -> " + cluster);
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+            queue.Enqueue(5);
+            queue.Enqueue(8);
+            queue.Enqueue(13);
+            Console.WriteLine("\tEnqueue -> " + queue);
             Console.WriteLine();
-            Console.WriteLine("\tContains -> (8): " + cluster.Contains(8));
+            Console.WriteLine("\tContains -> (8): " + queue.Contains(8));
             Console.WriteLine();
-            Console.WriteLine("\tIndexOf -> (13): " + cluster.IndexOf(13));
+            Console.WriteLine("\tIndexOf -> (13): " + queue.IndexOf(13));
             Console.WriteLine();
-            Console.WriteLine("\tPeek -> " + cluster.Peek());
+            Console.WriteLine("\tPeek -> " + queue.Peek());
             Console.WriteLine();
-            Console.WriteLine("\tIsFull -> " + cluster.IsFull);
+            Console.WriteLine("\tIsFull -> " + queue.IsFull);
             Console.WriteLine();
-            Console.WriteLine("\tDequeue -> " + cluster.Dequeue());
+            Console.WriteLine("\tDequeue -> " + queue.Dequeue());
             Console.WriteLine();
-            Console.WriteLine("\tDisplay -> " + cluster);
+            Console.WriteLine("\tDisplay -> " + queue);
             Console.WriteLine();
-            cluster.Reverse();
-            Console.WriteLine("\tReverse -> " + cluster);
+            queue.Reverse();
+            Console.WriteLine("\tReverse -> " + queue);
             Console.WriteLine();
-            Console.WriteLine("\tCount -> " + cluster.Count);
+            Console.WriteLine("\tCount -> " + queue.Count);
             Console.WriteLine();
-            cluster[1] = 21;
-            Console.WriteLine("\tSet[1] = 21 -> " + cluster);
+            queue[1] = 21;
+            Console.WriteLine("\tSet[1] = 21 -> " + queue);
             Console.WriteLine();
-            Console.WriteLine("\tGet[2] -> " + cluster[2]);
+            Console.WriteLine("\tGet[2] -> " + queue[2]);
             Console.WriteLine();
-            cluster.Clear();
-            Console.WriteLine("\tClear -> " + cluster);
+            queue.Clear();
+            Console.WriteLine("\tClear -> " + queue);
             Console.WriteLine();
-            Console.WriteLine("\tIsEmpty -> " + cluster.IsEmpty);
+            Console.WriteLine("\tIsEmpty -> " + queue.IsEmpty);
             Console.WriteLine();
-            cluster.Enqueue(5);
-            cluster.Enqueue(8);
-            cluster.Enqueue(13);
-            Console.WriteLine("\tEnqueue -> " + cluster);
+            queue.Enqueue(5);
+            queue.Enqueue(8);
+            queue.Enqueue(13);
+            Console.WriteLine("\tEnqueue -> " + queue);
+            Console.WriteLine();
+            Console.WriteLine("\tLinear Search -> " + new LinearSearch<int>().Search(queue, 5));
+            Console.WriteLine();
+            Console.WriteLine("\tBinary Search -> " + new BinarySearch<int>().Search(queue, 5));
+            Console.WriteLine();
+            Console.WriteLine("\tInterpolation Search -> " + new InterpolationSearch().Search(queue, 5));
             Console.WriteLine();
             Console.WriteLine("</Array Queue>");
             Console.WriteLine();

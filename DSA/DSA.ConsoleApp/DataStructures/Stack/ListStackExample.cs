@@ -1,4 +1,5 @@
 ﻿using System;
+using DSA.BLL.DataStructures.Search;
 using DSA.BLL.DataStructures.Stack;
 
 namespace DSA.ConsoleApp.DataStructures.Stack
@@ -7,48 +8,54 @@ namespace DSA.ConsoleApp.DataStructures.Stack
     {
         public static void Run()
         {
-            var cluster = new ListStack<int>();
+            var stack = new ListStack<int>();
 
             Console.WriteLine("<List Stack>");
             Console.WriteLine();
-            cluster.Push(2);
-            cluster.Push(3);
-            cluster.Push(5);
-            cluster.Push(8);
-            cluster.Push(13);
-            Console.WriteLine("\tPush -> " + cluster);
+            stack.Push(2);
+            stack.Push(3);
+            stack.Push(5);
+            stack.Push(8);
+            stack.Push(13);
+            Console.WriteLine("\tPush -> " + stack);
             Console.WriteLine();
-            Console.WriteLine("\tContains -> (8): " + cluster.Contains(8));
+            Console.WriteLine("\tContains -> (8): " + stack.Contains(8));
             Console.WriteLine();
-            Console.WriteLine("\tIndexOf -> (13): " + cluster.IndexOf(13));
+            Console.WriteLine("\tIndexOf -> (13): " + stack.IndexOf(13));
             Console.WriteLine();
-            Console.WriteLine("\tPeek -> " + cluster.Peek());
+            Console.WriteLine("\tPeek -> " + stack.Peek());
             Console.WriteLine();
-            Console.WriteLine("\tIsFull -> " + cluster.IsFull);
+            Console.WriteLine("\tIsFull -> " + stack.IsFull);
             Console.WriteLine();
-            Console.WriteLine("\tPop -> " + cluster.Pop());
+            Console.WriteLine("\tPop -> " + stack.Pop());
             Console.WriteLine();
-            Console.WriteLine("\tDisplay -> " + cluster);
+            Console.WriteLine("\tDisplay -> " + stack);
             Console.WriteLine();
-            cluster.Reverse();
-            Console.WriteLine("\tReverse -> " + cluster);
+            stack.Reverse();
+            Console.WriteLine("\tReverse -> " + stack);
             Console.WriteLine();
-            Console.WriteLine("\tCount -> " + cluster.Count);
+            Console.WriteLine("\tCount -> " + stack.Count);
             Console.WriteLine();
-            cluster[1] = 21;
-            Console.WriteLine("\tSet[1] = 21 -> " + cluster);
+            stack[1] = 21;
+            Console.WriteLine("\tSet[1] = 21 -> " + stack);
             Console.WriteLine();
-            Console.WriteLine("\tGet[2] -> " + cluster[2]);
+            Console.WriteLine("\tGet[2] -> " + stack[2]);
             Console.WriteLine();
-            cluster.Clear();
-            Console.WriteLine("\tClear -> " + cluster);
+            stack.Clear();
+            Console.WriteLine("\tClear -> " + stack);
             Console.WriteLine();
-            Console.WriteLine("\tIsEmpty -> " + cluster.IsEmpty);
+            Console.WriteLine("\tIsEmpty -> " + stack.IsEmpty);
             Console.WriteLine();
-            cluster.Push(5);
-            cluster.Push(8);
-            cluster.Push(13);
-            Console.WriteLine("\tPush -> " + cluster);
+            stack.Push(5);
+            stack.Push(8);
+            stack.Push(13);
+            Console.WriteLine("\tPush -> " + stack);
+            Console.WriteLine();
+            Console.WriteLine("\tLinear Search -> " + new LinearSearch<int>().Search(stack, 5));
+            Console.WriteLine();
+            Console.WriteLine("\tBinary Search -> " + new BinarySearch<int>().Search(stack, 5));
+            Console.WriteLine();
+            Console.WriteLine("\tInterpolation Search -> " + new InterpolationSearch().Search(stack, 5));
             Console.WriteLine();
             Console.WriteLine("</List Stack>");
             Console.WriteLine();

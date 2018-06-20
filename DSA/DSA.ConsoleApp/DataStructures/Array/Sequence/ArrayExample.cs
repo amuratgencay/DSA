@@ -1,6 +1,7 @@
 ﻿using System;
 using DSA.BLL.DataStructures;
 using DSA.BLL.DataStructures.Array;
+using DSA.BLL.DataStructures.Search;
 
 namespace DSA.ConsoleApp.DataStructures.Array.Sequence
 {
@@ -8,40 +9,46 @@ namespace DSA.ConsoleApp.DataStructures.Array.Sequence
     {
         public static void Run()
         {
-            ICountable<int> countable = new Array<int>(5);
+            var array = new Array<int>(5);
 
             Console.WriteLine("<Sequential Array>");
             Console.WriteLine();
-            Console.WriteLine("\tCreate -> " + countable);
+            Console.WriteLine("\tCreate -> " + array);
             Console.WriteLine();
-            countable[0] = 2;
-            countable[1] = 3;
-            countable[2] = 5;
-            countable[3] = 8;
-            countable[4] = 13;
-            Console.WriteLine("\tAdd -> " + countable);
+            array[0] = 2;
+            array[1] = 3;
+            array[2] = 5;
+            array[3] = 8;
+            array[4] = 13;
+            Console.WriteLine("\tAdd -> " + array);
             Console.WriteLine();
-            Console.WriteLine("\tContains -> (8): " + countable.Contains(8));
+            Console.WriteLine("\tContains -> (8): " + array.Contains(8));
             Console.WriteLine();
-            Console.WriteLine("\tIndexOf -> (13): " + countable.IndexOf(13));
+            Console.WriteLine("\tIndexOf -> (13): " + array.IndexOf(13));
             Console.WriteLine();
-            countable.Reverse();
-            Console.WriteLine("\tReverse -> " + countable);
+            array.Reverse();
+            Console.WriteLine("\tReverse -> " + array);
             Console.WriteLine();
-            Console.WriteLine("\tCount -> " + countable.Count);
+            Console.WriteLine("\tCount -> " + array.Count);
             Console.WriteLine();
-            countable[1] = 21;
-            Console.WriteLine("\tSet[1] = 21 -> " + countable);
+            array[1] = 21;
+            Console.WriteLine("\tSet[1] = 21 -> " + array);
             Console.WriteLine();
-            Console.WriteLine("\tGet[2] -> " + countable[2]);
+            Console.WriteLine("\tGet[2] -> " + array[2]);
             Console.WriteLine();
-            countable.Clear();
-            Console.WriteLine("\tClear -> " + countable);
+            array.Clear();
+            Console.WriteLine("\tClear -> " + array);
             Console.WriteLine();
-            countable[0] = 5;
-            countable[1] = 8;
-            countable[2] = 13;
-            Console.WriteLine("\tAdd -> " + countable);
+            array[0] = 5;
+            array[1] = 8;
+            array[2] = 13;
+            Console.WriteLine("\tAdd -> " + array);
+            Console.WriteLine();
+            Console.WriteLine("\tLinear Search -> " + new LinearSearch<int>().Search(array, 5));
+            Console.WriteLine();
+            Console.WriteLine("\tBinary Search -> " + new BinarySearch<int>().Search(array, 5));
+            Console.WriteLine();
+            Console.WriteLine("\tInterpolation Search -> " + new InterpolationSearch().Search(array, 5));
             Console.WriteLine();
             Console.WriteLine("</Sequential Array>");
             Console.WriteLine();

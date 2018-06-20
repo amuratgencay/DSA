@@ -6,7 +6,7 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
 {
     public class CircularLinkedList<T> : ICountable<T>
     {
-        private DoublyLinkedList<T> _first, _last;
+        private DoublyLinkedListItem<T> _first, _last;
 
         public virtual T this[int index]
         {
@@ -111,7 +111,7 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
 
         public virtual void Add(T item)
         {
-            var n = new DoublyLinkedList<T>(item);
+            var n = new DoublyLinkedListItem<T>(item);
 
             if (_first == null)
             {
@@ -136,7 +136,7 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
                 throw new IndexOutOfRangeException("Index grater or equal count.");
             var p = _first;
             var prev = _first;
-            var n = new DoublyLinkedList<T>(item);
+            var n = new DoublyLinkedListItem<T>(item);
             for (var i = 0; i < index; i++)
             {
                 prev = p;

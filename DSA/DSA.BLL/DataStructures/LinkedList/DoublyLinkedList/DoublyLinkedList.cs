@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
 {
-    public class DoublyLinkedCountable<T> : ICountable<T>
+    public class DoublyLinkedList<T> : ICountable<T>
     {
-        private DoublyLinkedList<T> _first, _last;
+        private DoublyLinkedListItem<T> _first, _last;
 
         public virtual T this[int index]
         {
@@ -98,7 +98,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
 
         public virtual void Add(T item)
         {
-            var n = new DoublyLinkedList<T>(item);
+            var n = new LinkedList.DoublyLinkedListItem<T>(item);
 
             if (_first == null)
             {
@@ -120,7 +120,7 @@ namespace DSA.BLL.DataStructures.LinkedList.DoublyLinkedList
                 throw new IndexOutOfRangeException("Index grater or equal count.");
             var p = _first;
             var prev = _first;
-            var n = new DoublyLinkedList<T>(item);
+            var n = new LinkedList.DoublyLinkedListItem<T>(item);
             for (var i = 0; i < index; i++)
             {
                 prev = p;

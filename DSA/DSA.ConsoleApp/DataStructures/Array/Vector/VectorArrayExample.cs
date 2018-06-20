@@ -1,5 +1,6 @@
 ﻿using System;
 using DSA.BLL.DataStructures.Array;
+using DSA.BLL.DataStructures.Search;
 
 namespace DSA.ConsoleApp.DataStructures.Array.Vector
 {
@@ -7,47 +8,53 @@ namespace DSA.ConsoleApp.DataStructures.Array.Vector
     {
         public static void Run()
         {
-            var countable = new Vector<int>(8);
+            var vector = new Vector<int>(8);
 
             Console.WriteLine("<Vector Array>");
             Console.WriteLine();
-            countable.Add(2);
-            countable.Add(3);
-            countable.Add(5);
-            countable.Add(8);
-            countable.Add(13);
-            Console.WriteLine("\tAdd -> " + countable);
+            vector.Add(2);
+            vector.Add(3);
+            vector.Add(5);
+            vector.Add(8);
+            vector.Add(13);
+            Console.WriteLine("\tAdd -> " + vector);
             Console.WriteLine();
-            countable.Insert(2, 7);
-            Console.WriteLine("\tInsert -> (2,7): " + countable);
+            vector.Insert(2, 7);
+            Console.WriteLine("\tInsert -> (2,7): " + vector);
             Console.WriteLine();
-            countable.Remove(7);
-            Console.WriteLine("\tRemove -> (7): " + countable);
+            vector.Remove(7);
+            Console.WriteLine("\tRemove -> (7): " + vector);
             Console.WriteLine();
-            countable.RemoveAt(3);
-            Console.WriteLine("\tRemoveAt -> (3) " + countable);
+            vector.RemoveAt(3);
+            Console.WriteLine("\tRemoveAt -> (3) " + vector);
             Console.WriteLine();
-            Console.WriteLine("\tContains -> (8): " + countable.Contains(8));
+            Console.WriteLine("\tContains -> (8): " + vector.Contains(8));
             Console.WriteLine();
-            Console.WriteLine("\tIndexOf -> (13): " + countable.IndexOf(13));
+            Console.WriteLine("\tIndexOf -> (13): " + vector.IndexOf(13));
             Console.WriteLine();
-            countable.Reverse();
-            Console.WriteLine("\tReverse -> " + countable);
+            vector.Reverse();
+            Console.WriteLine("\tReverse -> " + vector);
             Console.WriteLine();
-            Console.WriteLine("\tCount -> " + countable.Count);
+            Console.WriteLine("\tCount -> " + vector.Count);
             Console.WriteLine();
-            countable[1] = 21;
-            Console.WriteLine("\tSet[1] = 21 -> " + countable);
+            vector[1] = 21;
+            Console.WriteLine("\tSet[1] = 21 -> " + vector);
             Console.WriteLine();
-            Console.WriteLine("\tGet[2] -> " + countable[2]);
+            Console.WriteLine("\tGet[2] -> " + vector[2]);
             Console.WriteLine();
-            countable.Clear();
-            Console.WriteLine("\tClear -> " + countable);
+            vector.Clear();
+            Console.WriteLine("\tClear -> " + vector);
             Console.WriteLine();
-            countable.Add(5);
-            countable.Add(8);
-            countable.Add(13);
-            Console.WriteLine("\tAdd -> " + countable);
+            vector.Add(5);
+            vector.Add(8);
+            vector.Add(13);
+            Console.WriteLine("\tAdd -> " + vector);
+            Console.WriteLine();
+            Console.WriteLine("\tLinear Search -> " + new LinearSearch<int>().Search(vector, 5));
+            Console.WriteLine();
+            Console.WriteLine("\tBinary Search -> " + new BinarySearch<int>().Search(vector, 5));
+            Console.WriteLine();
+            Console.WriteLine("\tInterpolation Search -> " + new InterpolationSearch().Search(vector, 5));
             Console.WriteLine();
             Console.WriteLine("</Vector Array>");
             Console.WriteLine();

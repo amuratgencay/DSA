@@ -44,7 +44,7 @@
     <Compile Include="DataStructures\Array\Array.cs" />
     <Compile Include="DataStructures\ICountable.cs" />
     <Compile Include="DataStructures\LinkedList\CircularLinkedList\CircularLinkedList.cs" />
-    <Compile Include="DataStructures\LinkedList\DoublyLinkedList\DoublyLinkedCountable.cs" />
+    <Compile Include="DataStructures\LinkedList\DoublyLinkedList\DoublyLinkedList.cs" />
     <Compile Include="DataStructures\LinkedList\DoublyLinkedList.cs" />
     <Compile Include="DataStructures\LinkedList\SinglyLinkedList\SinglyLinkedList.cs" />
     <Compile Include="DataStructures\LinkedList\SinglyListItem.cs" />
