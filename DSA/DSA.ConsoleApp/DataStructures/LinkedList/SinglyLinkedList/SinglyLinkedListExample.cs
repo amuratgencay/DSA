@@ -1,5 +1,6 @@
 ﻿using System;
 using DSA.BLL.DataStructures.LinkedList.SinglyLinkedList;
+using DSA.BLL.DataStructures.Search;
 
 namespace DSA.ConsoleApp.DataStructures.LinkedList.SinglyLinkedList
 {
@@ -7,48 +8,54 @@ namespace DSA.ConsoleApp.DataStructures.LinkedList.SinglyLinkedList
     {
         public static void Run()
         {
-            var countable = new SinglyLinkedList<int>();
+            var list = new SinglyLinkedList<int>();
 
 
             Console.WriteLine("<Singly Linked List>");
             Console.WriteLine();
-            countable.Add(2);
-            countable.Add(3);
-            countable.Add(5);
-            countable.Add(8);
-            countable.Add(13);
-            Console.WriteLine("\tAdd -> " + countable);
+            list.Add(2);
+            list.Add(3);
+            list.Add(5);
+            list.Add(8);
+            list.Add(13);
+            Console.WriteLine("\tAdd -> " + list);
             Console.WriteLine();
-            countable.Insert(2, 7);
-            Console.WriteLine("\tInsert -> (2,7): " + countable);
+            list.Insert(2, 7);
+            Console.WriteLine("\tInsert -> (2,7): " + list);
             Console.WriteLine();
-            countable.Remove(7);
-            Console.WriteLine("\tRemove -> (7): " + countable);
+            list.Remove(7);
+            Console.WriteLine("\tRemove -> (7): " + list);
             Console.WriteLine();
-            countable.RemoveAt(2);
-            Console.WriteLine("\tRemoveAt -> (2) " + countable);
+            list.RemoveAt(2);
+            Console.WriteLine("\tRemoveAt -> (2) " + list);
             Console.WriteLine();
-            Console.WriteLine("\tContains -> (8): " + countable.Contains(8));
+            Console.WriteLine("\tContains -> (8): " + list.Contains(8));
             Console.WriteLine();
-            Console.WriteLine("\tIndexOf -> (13): " + countable.IndexOf(13));
+            Console.WriteLine("\tIndexOf -> (13): " + list.IndexOf(13));
             Console.WriteLine();
-            countable.Reverse();
-            Console.WriteLine("\tReverse -> " + countable);
+            list.Reverse();
+            Console.WriteLine("\tReverse -> " + list);
             Console.WriteLine();
-            Console.WriteLine("\tCount -> " + countable.Count);
+            Console.WriteLine("\tCount -> " + list.Count);
             Console.WriteLine();
-            countable[1] = 21;
-            Console.WriteLine("\tSet[1] = 21 -> " + countable);
+            list[1] = 21;
+            Console.WriteLine("\tSet[1] = 21 -> " + list);
             Console.WriteLine();
-            Console.WriteLine("\tGet[2] -> " + countable[2]);
+            Console.WriteLine("\tGet[2] -> " + list[2]);
             Console.WriteLine();
-            countable.Clear();
-            Console.WriteLine("\tClear -> " + countable);
+            list.Clear();
+            Console.WriteLine("\tClear -> " + list);
             Console.WriteLine();
-            countable.Add(5);
-            countable.Add(8);
-            countable.Add(13);
-            Console.WriteLine("\tAdd -> " + countable);
+            list.Add(5);
+            list.Add(8);
+            list.Add(13);
+            Console.WriteLine("\tAdd -> " + list);
+            Console.WriteLine();
+            Console.WriteLine("\tLinear Search -> " + new LinearSearch<int>().Search(list, 5));
+            Console.WriteLine();
+            Console.WriteLine("\tBinary Search -> " + new BinarySearch<int>().Search(list, 5));
+            Console.WriteLine();
+            Console.WriteLine("\tInterpolation Search -> " + new InterpolationSearch().Search(list, 5));
             Console.WriteLine();
             Console.WriteLine("</Singly Linked List>");
             Console.WriteLine();
