@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DSA.BLL.DataStructures.Array
@@ -39,13 +40,18 @@ namespace DSA.BLL.DataStructures.Array
             return false;
         }
 
-        public virtual int IndexOf(T item)
+        public int IndexOf(T item, int startIndex = 0)
         {
             for (var i = 0; i < Count; i++)
                 if (Array[i].Equals(item))
                     return i;
 
             return -1;
+        }
+
+        public int LastIndexOf(T item, int startIndex = 0)
+        {
+            throw new NotImplementedException();
         }
 
         public virtual void Reverse(int startIndex = 0, int endIndex = 0)

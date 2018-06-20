@@ -9,7 +9,7 @@ namespace DSA.BLL.DataStructures.Queue
         protected Array<T> array;
         protected int index;
 
-        public ArrayQueue(int count) 
+        public ArrayQueue(int count)
         {
             array = new Array<T>(count);
         }
@@ -25,7 +25,11 @@ namespace DSA.BLL.DataStructures.Queue
 
         public int Count => array.Count;
 
-        public T this[int index] { get => array[index]; set => array[index] = value; }
+        public T this[int index]
+        {
+            get => array[index];
+            set => array[index] = value;
+        }
 
         public T Peek()
         {
@@ -53,17 +57,34 @@ namespace DSA.BLL.DataStructures.Queue
             return res;
         }
 
+        public int LastIndexOf(T item, int startIndex = 0)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Reverse(int startIndex = 0, int endIndex = 0)
         {
             array.Reverse(startIndex, index - 1);
         }
 
-        public bool Contains(T item) => array.Contains(item);
+        public bool Contains(T item)
+        {
+            return array.Contains(item);
+        }
 
-        public int IndexOf(T item) => array.IndexOf(item);
+        public int IndexOf(T item, int startIndex = 0)
+        {
+            return array.IndexOf(item);
+        }
 
-        public IEnumerable<T> GetEnumerable() => array.GetEnumerable();
+        public IEnumerable<T> GetEnumerable()
+        {
+            return array.GetEnumerable();
+        }
 
-        public override string ToString() => array.ToString();
+        public override string ToString()
+        {
+            return array.ToString();
+        }
     }
 }

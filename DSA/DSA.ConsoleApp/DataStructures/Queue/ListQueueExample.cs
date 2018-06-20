@@ -8,7 +8,7 @@ namespace DSA.ConsoleApp.DataStructures.Queue
     {
         public static void Run()
         {
-            var queue = new ListQueue<int>();            
+            var queue = new ListQueue<int>();
             Console.WriteLine("<List Queue>");
             Console.WriteLine();
             queue.Enqueue(2);

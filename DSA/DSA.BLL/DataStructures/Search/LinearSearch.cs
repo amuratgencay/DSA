@@ -1,15 +1,5 @@
-﻿using DSA.BLL.DataStructures.Array;
-using DSA.BLL.DataStructures.LinkedList;
-using DSA.BLL.DataStructures.LinkedList.CircularLinkedList;
-using DSA.BLL.DataStructures.LinkedList.DoublyLinkedList;
-using DSA.BLL.DataStructures.LinkedList.SinglyLinkedList;
-using DSA.BLL.DataStructures.Queue;
-using DSA.BLL.DataStructures.Stack;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSA.BLL.DataStructures.Search
 {
@@ -31,61 +21,44 @@ namespace DSA.BLL.DataStructures.Search
             var arr = array.GetEnumerable().OrderBy(x => x).ToList();
             var lower = 0;
             var upper = arr.Count;
-            int mid = 0;
+            var mid = 0;
             while (lower < upper)
             {
                 mid = lower + (upper - lower) / 2;
                 if (arr[mid].CompareTo(item) < 0)
-                {
                     lower = mid + 1;
-                }
                 else if (arr[mid].CompareTo(item) > 0)
-                {
                     upper = mid - 1;
-                }
                 else
-                {
                     return arr[mid];
-                }
             }
-            if ((lower == upper) && arr[lower].CompareTo(item) == 0)
-            {
-                return arr[lower];
-            }
+
+            if (lower == upper && arr[lower].CompareTo(item) == 0) return arr[lower];
             return default(T);
         }
     }
 
-    public class InterpolationSearch 
+    public class InterpolationSearch
     {
         public int Search(ICountable<int> array, int item)
         {
             var arr = array.GetEnumerable().OrderBy(x => x).ToList();
             var lower = 0;
             var upper = arr.Count - 1;
-            int mid = -1;
+            var mid = -1;
             while (lower < upper)
             {
-                mid = lower + ((upper - lower) / (arr[upper] - arr[lower])) * (item - arr[lower]);
+                mid = lower + (upper - lower) / (arr[upper] - arr[lower]) * (item - arr[lower]);
                 if (arr[mid].CompareTo(item) < 0)
-                {
                     lower = mid + 1;
-                }
                 else if (arr[mid].CompareTo(item) > 0)
-                {
                     upper = mid - 1;
-                }
                 else
-                {
                     return arr[mid];
-                }
             }
-            if ((lower == upper) && arr[lower].CompareTo(item) == 0)
-            {
-                return arr[lower];
-            }
+
+            if (lower == upper && arr[lower].CompareTo(item) == 0) return arr[lower];
             return 0;
         }
     }
-
 }

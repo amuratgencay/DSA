@@ -6,8 +6,9 @@ namespace DSA.BLL.DataStructures.Stack
 {
     public class VectorStack<T> : IStack<T>
     {
-        protected Vector<T> vector;
         protected int index;
+        protected Vector<T> vector;
+
         public VectorStack()
         {
             vector = new Vector<T>();
@@ -18,7 +19,7 @@ namespace DSA.BLL.DataStructures.Stack
             vector = new Vector<T>(count);
         }
 
-        public VectorStack(int count, int factor) 
+        public VectorStack(int count, int factor)
         {
             vector = new Vector<T>(count, factor);
         }
@@ -28,7 +29,11 @@ namespace DSA.BLL.DataStructures.Stack
 
         public int Count => vector.Count;
 
-        public T this[int index] { get => vector[index]; set => vector[index] = value; }
+        public T this[int index]
+        {
+            get => vector[index];
+            set => vector[index] = value;
+        }
 
         public void Clear()
         {
@@ -59,17 +64,34 @@ namespace DSA.BLL.DataStructures.Stack
             return vector[0];
         }
 
+        public int LastIndexOf(T item, int startIndex = 0)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Reverse(int startIndex = 0, int endIndex = 0)
         {
             vector.Reverse(startIndex, index - 1);
         }
 
-        public bool Contains(T item) => vector.Contains(item);
+        public bool Contains(T item)
+        {
+            return vector.Contains(item);
+        }
 
-        public int IndexOf(T item) => vector.IndexOf(item);
+        public int IndexOf(T item, int startIndex = 0)
+        {
+            return vector.IndexOf(item);
+        }
 
-        public IEnumerable<T> GetEnumerable() => vector.GetEnumerable();
+        public IEnumerable<T> GetEnumerable()
+        {
+            return vector.GetEnumerable();
+        }
 
-        public override string ToString() => vector.ToString();
+        public override string ToString()
+        {
+            return vector.ToString();
+        }
     }
 }

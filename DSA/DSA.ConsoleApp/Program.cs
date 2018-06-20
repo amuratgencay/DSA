@@ -15,11 +15,16 @@ namespace DSA.ConsoleApp
         {
             while (true)
             {
-                Console.WriteLine("╔════════════════════════════════════════════════════════════════════════════════════╗");
-                Console.WriteLine("║                            Data Structures and Algorithms                          ║");
-                Console.WriteLine("╠════════════════╦════════════════╦════════════════╦════════════════╦════════════════╣");
-                Console.WriteLine("║    1. Array    ║ 2. Linked List ║   3. Stack     ║   4. Queue     ║    X. Exit     ║");
-                Console.WriteLine("╚════════════════╩════════════════╩════════════════╩════════════════╩════════════════╝");
+                Console.WriteLine(
+                    "╔════════════════════════════════════════════════════════════════════════════════════╗");
+                Console.WriteLine(
+                    "║                            Data Structures and Algorithms                          ║");
+                Console.WriteLine(
+                    "╠════════════════╦════════════════╦════════════════╦════════════════╦════════════════╣");
+                Console.WriteLine(
+                    "║    1. Array    ║ 2. Linked List ║   3. Stack     ║   4. Queue     ║    X. Exit     ║");
+                Console.WriteLine(
+                    "╚════════════════╩════════════════╩════════════════╩════════════════╩════════════════╝");
                 var choice = char.ToLower(Console.ReadKey().KeyChar);
                 Console.Clear();
                 var done = false;
@@ -56,11 +61,16 @@ namespace DSA.ConsoleApp
                     case '2':
                         while (!done)
                         {
-                            Console.WriteLine("╔═══════════════════════════════════════════════════════════════════════════════════════════════════════╗");
-                            Console.WriteLine("║                                            Linked List                                                ║");
-                            Console.WriteLine("╠═════════════════════════╦═════════════════════════╦═════════════════════════╦═════════════════════════╣");
-                            Console.WriteLine("║ 1. Singly Linked List   ║ 2. Doubly Linked List   ║ 3. Circular Linked List ║        B. Back          ║");
-                            Console.WriteLine("╚═════════════════════════╩═════════════════════════╩═════════════════════════╩═════════════════════════╝");
+                            Console.WriteLine(
+                                "╔═══════════════════════════════════════════════════════════════════════════════════════════════════════╗");
+                            Console.WriteLine(
+                                "║                                            Linked List                                                ║");
+                            Console.WriteLine(
+                                "╠═════════════════════════╦═════════════════════════╦═════════════════════════╦═════════════════════════╣");
+                            Console.WriteLine(
+                                "║ 1. Singly Linked List   ║ 2. Doubly Linked List   ║ 3. Circular Linked List ║        B. Back          ║");
+                            Console.WriteLine(
+                                "╚═════════════════════════╩═════════════════════════╩═════════════════════════╩═════════════════════════╝");
                             choice = char.ToLower(Console.ReadKey().KeyChar);
                             Console.Clear();
                             switch (choice)
@@ -87,11 +97,16 @@ namespace DSA.ConsoleApp
                     case '3':
                         while (!done)
                         {
-                            Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
-                            Console.WriteLine("║                                  Stack                                 ║");
-                            Console.WriteLine("╠══════════════════╦═════════════════╦════════════════╦══════════════════╣");
-                            Console.WriteLine("║ 1. Array Stack   ║ 2. Vector Stack ║ 3. List Stack  ║      B. Back     ║");
-                            Console.WriteLine("╚══════════════════╩═════════════════╩════════════════╩══════════════════╝");
+                            Console.WriteLine(
+                                "╔════════════════════════════════════════════════════════════════════════╗");
+                            Console.WriteLine(
+                                "║                                  Stack                                 ║");
+                            Console.WriteLine(
+                                "╠══════════════════╦═════════════════╦════════════════╦══════════════════╣");
+                            Console.WriteLine(
+                                "║ 1. Array Stack   ║ 2. Vector Stack ║ 3. List Stack  ║      B. Back     ║");
+                            Console.WriteLine(
+                                "╚══════════════════╩═════════════════╩════════════════╩══════════════════╝");
                             choice = char.ToLower(Console.ReadKey().KeyChar);
                             Console.Clear();
                             switch (choice)
@@ -118,11 +133,16 @@ namespace DSA.ConsoleApp
                     case '4':
                         while (!done)
                         {
-                            Console.WriteLine("╔════════════════════════════════════════════════════════════════════════╗");
-                            Console.WriteLine("║                                  Queue                                 ║");
-                            Console.WriteLine("╠══════════════════╦═════════════════╦════════════════╦══════════════════╣");
-                            Console.WriteLine("║ 1. Array Queue   ║ 2. Vector Queue ║ 3. List Queue  ║      B. Back     ║");
-                            Console.WriteLine("╚══════════════════╩═════════════════╩════════════════╩══════════════════╝");
+                            Console.WriteLine(
+                                "╔════════════════════════════════════════════════════════════════════════╗");
+                            Console.WriteLine(
+                                "║                                  Queue                                 ║");
+                            Console.WriteLine(
+                                "╠══════════════════╦═════════════════╦════════════════╦══════════════════╣");
+                            Console.WriteLine(
+                                "║ 1. Array Queue   ║ 2. Vector Queue ║ 3. List Queue  ║      B. Back     ║");
+                            Console.WriteLine(
+                                "╚══════════════════╩═════════════════╩════════════════╩══════════════════╝");
                             choice = char.ToLower(Console.ReadKey().KeyChar);
                             Console.Clear();
                             switch (choice)
