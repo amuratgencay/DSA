@@ -7,8 +7,7 @@ namespace DSA.ConsoleApp.DataStructures.Queue
     {
         public static void Run()
         {
-            var cluster = new ArrayQueue<int>(5);
-
+            var cluster = new ArrayQueue<int>(5);            
             Console.WriteLine("<Array Queue>");
             Console.WriteLine();
             cluster.Enqueue(2);

@@ -1,44 +1,53 @@
 ﻿using System;
+using System.Collections.Generic;
 using DSA.BLL.DataStructures.LinkedList.SinglyLinkedList;
 
 namespace DSA.BLL.DataStructures.Stack
 {
-    public class ListStack<T> : SinglyLinkedList<T>, IStack<T>
+    public class ListStack<T> : IStack<T>
     {
+        protected SinglyLinkedList<T> list;
+        protected int index;
+
         public ListStack()
         {
+            list = new SinglyLinkedList<T>();
         }
 
         public ListStack(int count)
         {
-            for (var i = 0; i < count; i++) Add(default(T));
+            for (var i = 0; i < count; i++) list.Add(default(T));
         }
 
-        public int Index { get; private set; }
+        
 
 
-        public bool IsEmpty => Index <= 0;
+        public bool IsEmpty => index <= 0;
         public bool IsFull => false;
 
-        public override void Clear()
+        public int Count => list.Count;
+
+        public T this[int index] { get => list[index]; set => list[index] = value; }
+
+        public  void Clear()
         {
-            base.Clear();
-            Index = 0;
+            list.Clear();
+            index = 0;
         }
 
         public virtual void Push(T item)
         {
-            Add(item);
-            Index++;
+            list.Add(item);
+            index++;
         }
 
-        public virtual T Pop()
+        public T Pop()
         {
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Stack is empty.");
-            Index--;
-            var res = this[Index];
-            RemoveAt(Index);
+            index--;
+            var res = this[index];
+            list.RemoveAt(index);
             return res;
         }
 
@@ -49,9 +58,17 @@ namespace DSA.BLL.DataStructures.Stack
             return this[0];
         }
 
-        public override void Reverse(int startIndex = 0, int endIndex = 0)
+        public void Reverse(int startIndex = 0, int endIndex = 0)
         {
-            base.Reverse(startIndex, Index - 1);
+            list.Reverse(startIndex, index - 1);
         }
+
+        public bool Contains(T item) => list.Contains(item);
+
+        public int IndexOf(T item) => list.IndexOf(item);
+
+        public IEnumerable<T> GetEnumerable() => list.GetEnumerable();
+
+        public override string ToString() => list.ToString();
     }
 }

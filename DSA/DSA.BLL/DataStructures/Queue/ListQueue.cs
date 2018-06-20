@@ -1,57 +1,75 @@
 ﻿using System;
+using System.Collections.Generic;
 using DSA.BLL.DataStructures.LinkedList.SinglyLinkedList;
 
 namespace DSA.BLL.DataStructures.Queue
 {
-    public class ListQueue<T> : SinglyLinkedList<T>, IQueue<T>
+    public class ListQueue<T> : IQueue<T>
     {
+        protected SinglyLinkedList<T> list;
+        protected int index;
+
         public ListQueue()
         {
+            list = new SinglyLinkedList<T>();
         }
 
         public ListQueue(int count)
         {
-            for (var i = 0; i < count; i++) Add(default(T));
+            list = new SinglyLinkedList<T>();
+            for (var i = 0; i < count; i++) list.Add(default(T));
         }
 
-        public int Index { get; private set; }
+        
 
 
-        public bool IsEmpty => Index <= 0;
+        public bool IsEmpty => index <= 0;
         public bool IsFull => false;
 
-        public override void Clear()
+        public int Count => list.Count;
+
+        public T this[int index] { get => list[index]; set => list[index] = value; }
+
+        public void Clear()
         {
-            base.Clear();
-            Index = 0;
+            list.Clear();
+            index = 0;
         }
 
-        public virtual void Enqueue(T item)
+        public void Enqueue(T item)
         {
-            Add(item);
-            Index++;
+            list.Add(item);
+            index++;
         }
 
-        public virtual T Dequeue()
+        public T Dequeue()
         {
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Queue is empty.");
             var res = this[0];
-            RemoveAt(0);
-            Index--;
+            list.RemoveAt(0);
+            index--;
             return res;
         }
 
-        public virtual T Peek()
+        public T Peek()
         {
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Queue is empty.");
             return this[0];
         }
 
-        public override void Reverse(int startIndex = 0, int endIndex = 0)
+        public void Reverse(int startIndex = 0, int endIndex = 0)
         {
-            base.Reverse(startIndex, Index - 1);
+            list.Reverse(startIndex, index - 1);
         }
+
+        public bool Contains(T item) => list.Contains(item);
+
+        public int IndexOf(T item) => list.IndexOf(item);
+
+        public IEnumerable<T> GetEnumerable() => list.GetEnumerable();
+
+        public override string ToString() => list.ToString();
     }
 }
