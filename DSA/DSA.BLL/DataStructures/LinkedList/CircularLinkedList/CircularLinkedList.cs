@@ -6,10 +6,10 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
     {
         private void LinkLastToFirst()
         {
-            var first = (DoublyListItem<T>)First;
-            var last = (DoublyListItem<T>)Last;
-            last.Next = (DoublyListItem<T>)First;
-            first.Prev = (DoublyListItem<T>)Last;
+            var first = First;
+            var last = Last;
+            last.Next = First;
+            first.Prev = Last;
         }
 
         public override void Add(T item)

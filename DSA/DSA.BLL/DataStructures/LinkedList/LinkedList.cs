@@ -17,11 +17,28 @@ namespace DSA.BLL.DataStructures.LinkedList
     {
         public ListItem(T item)
         {
-            Item = item;
+            Value = item;
             LinksItems = new Dictionary<ListItemWay, ListItem<T>>();
         }
 
-        public T Item { get; set; }
+        public T Value { get; set; }
+
+        public ListItem<T> this[ListItemWay way]
+        {
+            get
+            {
+                return LinksItems.ContainsKey(way) ? LinksItems[way] : null;
+            }
+            set
+            {
+                if (LinksItems.ContainsKey(way))
+                    LinksItems[way] = value;
+                else
+                    LinksItems.Add(way, value);
+            }
+        }
+
+
 
         protected Dictionary<ListItemWay, ListItem<T>> LinksItems { get; set; }
 
@@ -33,7 +50,7 @@ namespace DSA.BLL.DataStructures.LinkedList
         public void Clear()
         {
             LinksItems.Clear();
-            Item = default(T);
+            Value = default(T);
         }
 
         private static void ClearRecursive(ListItem<T> item)
@@ -45,25 +62,11 @@ namespace DSA.BLL.DataStructures.LinkedList
             foreach (var listItem in q) ClearRecursive(listItem);
         }
 
-
         public static ListItem<T> operator ++(ListItem<T> item)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
-            return item.GetLink(ListItemWay.Next);
-        }
-
-        public ListItem<T> GetLink(ListItemWay way)
-        {
-            return LinksItems.ContainsKey(way) ? LinksItems[way] : null;
-        }
-
-        public void SetLink(ListItemWay way, ListItem<T> item)
-        {
-            if (LinksItems.ContainsKey(way))
-                LinksItems[way] = item;
-            else
-                LinksItems.Add(way, item);
+            return item[ListItemWay.Next];
         }
     }
 
@@ -125,7 +128,7 @@ namespace DSA.BLL.DataStructures.LinkedList
                     throw new IndexOutOfRangeException("Index grater or equal count.");
                 var item = First;
                 for (var i = 0; i < index; i++) item++;
-                return item.Item;
+                return item.Value;
             }
             set
             {
@@ -134,7 +137,7 @@ namespace DSA.BLL.DataStructures.LinkedList
                 var item = First;
                 for (var i = 0; i < index; i++) item++;
 
-                item.Item = value;
+                item.Value = value;
             }
         }
 
@@ -152,7 +155,7 @@ namespace DSA.BLL.DataStructures.LinkedList
             var p = First;
             for (var i = 0; i < Count; i++)
             {
-                if (p.Item.Equals(item)) return true;
+                if (p.Value.Equals(item)) return true;
 
                 p++;
             }
@@ -165,7 +168,7 @@ namespace DSA.BLL.DataStructures.LinkedList
             var p = First;
             for (var i = startIndex; i < Count; i++)
             {
-                if (p.Item.Equals(item)) return i;
+                if (p.Value.Equals(item)) return i;
 
                 p++;
             }
@@ -183,7 +186,7 @@ namespace DSA.BLL.DataStructures.LinkedList
                 var q = First;
                 for (var j = 0; j < i; j++) q++;
 
-                if (q.Item.Equals(item)) return i;
+                if (q.Value.Equals(item)) return i;
 
                 p++;
             }
@@ -211,9 +214,9 @@ namespace DSA.BLL.DataStructures.LinkedList
                 var q = First;
                 for (var k = 0; k < j; k++) q++;
 
-                var tmp = p.Item;
-                p.Item = q.Item;
-                q.Item = tmp;
+                var tmp = p.Value;
+                p.Value = q.Value;
+                q.Value = tmp;
             }
         }
 
@@ -222,7 +225,7 @@ namespace DSA.BLL.DataStructures.LinkedList
             var p = First;
             for (var i = 0; i < Count; i++)
             {
-                yield return p.Item;
+                yield return p.Value;
                 p++;
             }
         }
@@ -240,7 +243,7 @@ namespace DSA.BLL.DataStructures.LinkedList
             }
             else
             {
-                Last.SetLink(ListItemWay.Next, item);
+                Last[ListItemWay.Next] = item;
                 Last++;
             }
 
@@ -261,18 +264,18 @@ namespace DSA.BLL.DataStructures.LinkedList
 
             if (p == First)
             {
-                item.SetLink(ListItemWay.Next, First);
+                item[ListItemWay.Next] = First;
                 First = item;
             }
             else if (p == Last)
             {
-                Last.SetLink(ListItemWay.Next, item);
+                Last[ListItemWay.Next] = item;
                 Last = item;
             }
             else
             {
-                prev.SetLink(ListItemWay.Next, item);
-                item.SetLink(ListItemWay.Next, p);
+                prev[ListItemWay.Next] = item;
+                item[ListItemWay.Next] = p;
             }
 
             Count++;
@@ -304,13 +307,13 @@ namespace DSA.BLL.DataStructures.LinkedList
             }
             else if (item == Last)
             {
-                prev.SetLink(ListItemWay.Next, null);
+                prev[ListItemWay.Next] = null;
                 Last = prev;
             }
             else
             {
-                prev.SetLink(ListItemWay.Next, item.GetLink(ListItemWay.Next));
-                item.SetLink(ListItemWay.Next, null);
+                prev[ListItemWay.Next] = item[ListItemWay.Next];
+                item[ListItemWay.Next] = null;
             }
 
             Count--;
