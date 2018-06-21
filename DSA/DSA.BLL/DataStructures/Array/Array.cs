@@ -12,7 +12,7 @@ namespace DSA.BLL.DataStructures.Array
         }
 
         protected T[] Arr { get; set; }
-
+        
         public virtual T this[int index]
         {
             get => Arr[index];
