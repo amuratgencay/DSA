@@ -6,42 +6,42 @@ namespace DSA.BLL.DataStructures.Queue
 {
     public class ListQueue<T> : IQueue<T>
     {
-        protected int index;
-        protected SinglyLinkedList<T> list;
+        protected int Index;
+        protected SinglyLinkedList<T> List;
 
         public ListQueue()
         {
-            list = new SinglyLinkedList<T>();
+            List = new SinglyLinkedList<T>();
         }
 
         public ListQueue(int count)
         {
-            list = new SinglyLinkedList<T>();
-            for (var i = 0; i < count; i++) list.Add(default(T));
+            List = new SinglyLinkedList<T>();
+            for (var i = 0; i < count; i++) List.Add(default(T));
         }
 
 
-        public bool IsEmpty => index <= 0;
+        public bool IsEmpty => Index <= 0;
         public bool IsFull => false;
 
-        public int Count => list.Count;
+        public int Count => List.Count;
 
         public T this[int index]
         {
-            get => list[index];
-            set => list[index] = value;
+            get => List[index];
+            set => List[index] = value;
         }
 
         public void Clear()
         {
-            list.Clear();
-            index = 0;
+            List.Clear();
+            Index = 0;
         }
 
         public void Enqueue(T item)
         {
-            list.Add(item);
-            index++;
+            List.Add(item);
+            Index++;
         }
 
         public T Dequeue()
@@ -49,8 +49,8 @@ namespace DSA.BLL.DataStructures.Queue
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Queue is empty.");
             var res = this[0];
-            list.RemoveAt(0);
-            index--;
+            List.RemoveAt(0);
+            Index--;
             return res;
         }
 
@@ -61,35 +61,44 @@ namespace DSA.BLL.DataStructures.Queue
             return this[0];
         }
 
-        public int LastIndexOf(T item, int startIndex = 0)
-        {
-            throw new NotImplementedException();
-        }
 
         public void Reverse(int startIndex = 0, int endIndex = 0)
         {
-            list.Reverse(startIndex, index - 1);
+            List.Reverse(startIndex, Index - 1);
         }
 
         public bool Contains(T item)
         {
-            return list.Contains(item);
+            return List.Contains(item);
         }
 
         public int IndexOf(T item, int startIndex = 0)
         {
-            return list.IndexOf(item);
+            return List.IndexOf(item, startIndex);
         }
 
+        public int LastIndexOf(T item, int startIndex = 0)
+        {
+            return List.LastIndexOf(item, startIndex);
+        }
 
         public IEnumerable<T> GetEnumerable()
         {
-            return list.GetEnumerable();
+            return List.GetEnumerable();
+        }
+
+        public object Clone()
+        {
+            return new ListQueue<T>(Count)
+            {
+                List = (SinglyLinkedList<T>) List.Clone(),
+                Index = Index
+            };
         }
 
         public override string ToString()
         {
-            return list.ToString();
+            return List.ToString();
         }
     }
 }

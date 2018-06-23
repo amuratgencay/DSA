@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using DSA.BLL.DataStructures;
 using DSA.BLL.DataStructures.LinkedList.CircularLinkedList;
 using DSA.BLL.DataStructures.Search;
+using DSA.BLL.DataStructures.Sort;
 
 namespace DSA.ConsoleApp.DataStructures.LinkedList.CircularLinkedList
 {
@@ -32,6 +37,8 @@ namespace DSA.ConsoleApp.DataStructures.LinkedList.CircularLinkedList
             Console.WriteLine();
             Console.WriteLine("\tIndexOf -> (13): " + list.IndexOf(13));
             Console.WriteLine();
+            Console.WriteLine("\tLastIndexOf -> (13): " + list.LastIndexOf(13));
+            Console.WriteLine();
             list.Reverse();
             Console.WriteLine("\tReverse -> " + list);
             Console.WriteLine();
@@ -45,17 +52,36 @@ namespace DSA.ConsoleApp.DataStructures.LinkedList.CircularLinkedList
             list.Clear();
             Console.WriteLine("\tClear -> " + list);
             Console.WriteLine();
-            list.Add(5);
+            list.Add(21);
             list.Add(8);
+            list.Add(5);
             list.Add(13);
             Console.WriteLine("\tAdd -> " + list);
             Console.WriteLine();
-            Console.WriteLine("\tLinear Search -> " + new LinearSearch<int>().Search(list, 5));
-            Console.WriteLine();
-            Console.WriteLine("\tBinary Search -> " + new BinarySearch<int>().Search(list, 5));
-            Console.WriteLine();
-            Console.WriteLine("\tInterpolation Search -> " + new InterpolationSearch().Search(list, 5));
-            Console.WriteLine();
+            var searchType = typeof(ISearch<>);
+            var search = new List<Type>(Assembly.GetAssembly(searchType).GetTypes())
+                .Where(x => x.GetInterfaces().Any(y => y.Name == searchType.Name)).ToList();
+            foreach (var type in search)
+            {
+                var genericType = type.MakeGenericType(typeof(int));
+                var item = (ISearch<int>) Activator.CreateInstance(genericType);
+                Console.WriteLine("\t" + genericType.GetCleanTypeName() + " -> " + item.Search(list, 5));
+                Console.WriteLine();
+            }
+
+            var sortType = typeof(ISort<>);
+            var sort = new List<Type>(Assembly.GetAssembly(sortType).GetTypes())
+                .Where(x => x.GetInterfaces().Any(y => y.Name == sortType.Name)).ToList();
+            foreach (var type in sort)
+            {
+                var genericType = type.MakeGenericType(typeof(int));
+                var item = (ISort<int>) Activator.CreateInstance(genericType);
+                Console.WriteLine("\t" + genericType.GetCleanTypeName() + " -> " + item.Sort(list));
+                Console.WriteLine();
+                Console.WriteLine("\tOriginal -> " + list);
+                Console.WriteLine();
+            }
+
             Console.WriteLine("</Circular Linked List>");
             Console.WriteLine();
         }

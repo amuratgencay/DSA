@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using DSA.BLL.DataStructures;
 using DSA.BLL.DataStructures.Array;
 using DSA.BLL.DataStructures.Search;
+using DSA.BLL.DataStructures.Sort;
 
 namespace DSA.ConsoleApp.DataStructures.Array.Sequence
 {
@@ -25,6 +30,8 @@ namespace DSA.ConsoleApp.DataStructures.Array.Sequence
             Console.WriteLine();
             Console.WriteLine("\tIndexOf -> (13): " + array.IndexOf(13));
             Console.WriteLine();
+            Console.WriteLine("\tLastIndexOf -> (13): " + array.LastIndexOf(13));
+            Console.WriteLine();
             array.Reverse();
             Console.WriteLine("\tReverse -> " + array);
             Console.WriteLine();
@@ -38,17 +45,37 @@ namespace DSA.ConsoleApp.DataStructures.Array.Sequence
             array.Clear();
             Console.WriteLine("\tClear -> " + array);
             Console.WriteLine();
-            array[0] = 5;
+            array[0] = 21;
             array[1] = 8;
-            array[2] = 13;
+            array[2] = 5;
+            array[3] = 13;
             Console.WriteLine("\tAdd -> " + array);
             Console.WriteLine();
-            Console.WriteLine("\tLinear Search -> " + new LinearSearch<int>().Search(array, 5));
-            Console.WriteLine();
-            Console.WriteLine("\tBinary Search -> " + new BinarySearch<int>().Search(array, 5));
-            Console.WriteLine();
-            Console.WriteLine("\tInterpolation Search -> " + new InterpolationSearch().Search(array, 5));
-            Console.WriteLine();
+
+            var searchType = typeof(ISearch<>);
+            var search = new List<Type>(Assembly.GetAssembly(searchType).GetTypes())
+                .Where(x => x.GetInterfaces().Any(y => y.Name == searchType.Name)).ToList();
+            foreach (var type in search)
+            {
+                var genericType = type.MakeGenericType(typeof(int));
+                var item = (ISearch<int>) Activator.CreateInstance(genericType);
+                Console.WriteLine("\t" + genericType.GetCleanTypeName() + " -> " + item.Search(array, 5));
+                Console.WriteLine();
+            }
+
+            var sortType = typeof(ISort<>);
+            var sort = new List<Type>(Assembly.GetAssembly(sortType).GetTypes())
+                .Where(x => x.GetInterfaces().Any(y => y.Name == sortType.Name)).ToList();
+            foreach (var type in sort)
+            {
+                var genericType = type.MakeGenericType(typeof(int));
+                var item = (ISort<int>) Activator.CreateInstance(genericType);
+                Console.WriteLine("\t" + genericType.GetCleanTypeName() + " -> " + item.Sort(array));
+                Console.WriteLine();
+                Console.WriteLine("\tOriginal -> " + array);
+                Console.WriteLine();
+            }
+
             Console.WriteLine("</Sequential Array>");
             Console.WriteLine();
         }

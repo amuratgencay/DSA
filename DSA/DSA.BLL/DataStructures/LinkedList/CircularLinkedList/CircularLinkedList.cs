@@ -27,10 +27,7 @@ namespace DSA.BLL.DataStructures.LinkedList.CircularLinkedList
         public override bool RemoveAt(int index)
         {
             var res = base.RemoveAt(index);
-            if (Count > 0)
-            {
-                LinkLastToFirst();
-            }
+            if (Count > 0) LinkLastToFirst();
 
             return res;
         }

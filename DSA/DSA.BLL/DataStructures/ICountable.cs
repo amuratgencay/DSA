@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DSA.BLL.DataStructures
 {
-    public interface ICountable<T>
+    public interface ICountable<T> : ICloneable
     {
         T this[int index] { get; set; }
         int Count { get; }

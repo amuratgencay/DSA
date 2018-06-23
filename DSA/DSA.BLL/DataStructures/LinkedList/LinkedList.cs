@@ -25,10 +25,7 @@ namespace DSA.BLL.DataStructures.LinkedList
 
         public ListItem<T> this[ListItemWay way]
         {
-            get
-            {
-                return LinksItems.ContainsKey(way) ? LinksItems[way] : null;
-            }
+            get => LinksItems.ContainsKey(way) ? LinksItems[way] : null;
             set
             {
                 if (LinksItems.ContainsKey(way))
@@ -37,7 +34,6 @@ namespace DSA.BLL.DataStructures.LinkedList
                     LinksItems.Add(way, value);
             }
         }
-
 
 
         protected Dictionary<ListItemWay, ListItem<T>> LinksItems { get; set; }
@@ -178,8 +174,9 @@ namespace DSA.BLL.DataStructures.LinkedList
 
         public virtual int LastIndexOf(T item, int startIndex = 0)
         {
-            if (startIndex == 0)
+            if (startIndex <= 0)
                 startIndex = Count - 1;
+
             var p = First;
             for (var i = startIndex; i >= 0; i--)
             {
@@ -230,9 +227,22 @@ namespace DSA.BLL.DataStructures.LinkedList
             }
         }
 
+        public object Clone()
+        {
+            var res = (LinkedList<T>) Activator.CreateInstance(GetType());
+            for (var i = 0; i < Count; i++) res.Add(this[i]);
+
+            return res;
+        }
+
         public override string ToString()
         {
             return $"( {GetEnumerable().Aggregate("", (x, y) => x + (!string.IsNullOrEmpty(x) ? ", " : "") + y)} )";
+        }
+
+        public virtual void Add(T item)
+        {
+            Add(new ListItem<T>(item));
         }
 
         protected virtual void Add(ListItem<T> item)
