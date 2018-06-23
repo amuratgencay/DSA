@@ -6,43 +6,43 @@ namespace DSA.BLL.DataStructures.Queue
 {
     public class ArrayQueue<T> : IQueue<T>
     {
-        protected Array<T> array;
-        protected int index;
+        protected Array<T> Arr;
+        protected int Index;
 
         public ArrayQueue(int count)
         {
-            array = new Array<T>(count);
+            Arr = new Array<T>(count);
         }
 
         public void Clear()
         {
-            array.Clear();
-            index = 0;
+            Arr.Clear();
+            Index = 0;
         }
 
-        public bool IsEmpty => index <= 0;
-        public bool IsFull => index >= Count;
+        public bool IsEmpty => Index <= 0;
+        public bool IsFull => Index >= Count;
 
-        public int Count => array.Count;
+        public int Count => Arr.Count;
 
         public T this[int index]
         {
-            get => array[index];
-            set => array[index] = value;
+            get => Arr[index];
+            set => Arr[index] = value;
         }
 
         public T Peek()
         {
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Queue is empty.");
-            return array[0];
+            return Arr[0];
         }
 
         public void Enqueue(T item)
         {
             if (IsFull)
                 throw new IndexOutOfRangeException("Queue is full.");
-            array[index++] = item;
+            Arr[Index++] = item;
         }
 
         public T Dequeue()
@@ -50,41 +50,50 @@ namespace DSA.BLL.DataStructures.Queue
             if (IsEmpty)
                 throw new IndexOutOfRangeException("Stack is empty.");
 
-            var res = array[0];
-            for (var i = 1; i < Count; i++) array[i - 1] = array[i];
-            array[Count - 1] = default(T);
-            index--;
+            var res = Arr[0];
+            for (var i = 1; i < Count; i++) Arr[i - 1] = Arr[i];
+            Arr[Count - 1] = default(T);
+            Index--;
             return res;
-        }
-
-        public int LastIndexOf(T item, int startIndex = 0)
-        {
-            throw new NotImplementedException();
         }
 
         public void Reverse(int startIndex = 0, int endIndex = 0)
         {
-            array.Reverse(startIndex, index - 1);
+            Arr.Reverse(startIndex, Index - 1);
         }
 
         public bool Contains(T item)
         {
-            return array.Contains(item);
+            return Arr.Contains(item);
         }
 
         public int IndexOf(T item, int startIndex = 0)
         {
-            return array.IndexOf(item);
+            return Arr.IndexOf(item, startIndex);
+        }
+
+        public int LastIndexOf(T item, int startIndex = 0)
+        {
+            return Arr.LastIndexOf(item, startIndex);
         }
 
         public IEnumerable<T> GetEnumerable()
         {
-            return array.GetEnumerable();
+            return Arr.GetEnumerable();
+        }
+
+        public object Clone()
+        {
+            return new ArrayQueue<T>(Count)
+            {
+                Arr = (Array<T>) Arr.Clone(),
+                Index = Index
+            };
         }
 
         public override string ToString()
         {
-            return array.ToString();
+            return Arr.ToString();
         }
     }
 }

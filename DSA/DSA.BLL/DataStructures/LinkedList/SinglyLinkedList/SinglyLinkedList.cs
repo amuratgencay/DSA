@@ -2,7 +2,7 @@
 {
     public class SinglyLinkedList<T> : LinkedList<T>
     {
-        public virtual void Add(T item)
+        public override void Add(T item)
         {
             base.Add(new SinglyListItem<T>(item));
         }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace DSA.BLL.DataStructures.Array
@@ -12,7 +11,7 @@ namespace DSA.BLL.DataStructures.Array
         }
 
         protected T[] Arr { get; set; }
-        
+
         public virtual T this[int index]
         {
             get => Arr[index];
@@ -38,7 +37,7 @@ namespace DSA.BLL.DataStructures.Array
 
         public virtual int IndexOf(T item, int startIndex = 0)
         {
-            for (var i = 0; i < Count; i++)
+            for (var i = startIndex; i < Count; i++)
                 if (Arr[i].Equals(item))
                     return i;
 
@@ -47,7 +46,14 @@ namespace DSA.BLL.DataStructures.Array
 
         public virtual int LastIndexOf(T item, int startIndex = 0)
         {
-            throw new NotImplementedException();
+            if (startIndex <= 0)
+                startIndex = Count - 1;
+
+            for (var i = startIndex; i >= 0; i--)
+                if (Arr[i].Equals(item))
+                    return i;
+
+            return -1;
         }
 
         public virtual void Reverse(int startIndex = 0, int endIndex = 0)
@@ -73,6 +79,14 @@ namespace DSA.BLL.DataStructures.Array
         public virtual IEnumerable<T> GetEnumerable()
         {
             return Arr.ToList();
+        }
+
+        public object Clone()
+        {
+            var res = new Array<T>(Count);
+            for (var i = 0; i < Count; i++) res[i] = Arr[i];
+
+            return res;
         }
 
 

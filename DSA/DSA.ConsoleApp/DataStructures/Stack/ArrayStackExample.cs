@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using DSA.BLL.DataStructures;
 using DSA.BLL.DataStructures.Search;
+using DSA.BLL.DataStructures.Sort;
 using DSA.BLL.DataStructures.Stack;
 
 namespace DSA.ConsoleApp.DataStructures.Stack
@@ -22,6 +27,8 @@ namespace DSA.ConsoleApp.DataStructures.Stack
             Console.WriteLine("\tContains -> (8): " + stack.Contains(8));
             Console.WriteLine();
             Console.WriteLine("\tIndexOf -> (13): " + stack.IndexOf(13));
+            Console.WriteLine();
+            Console.WriteLine("\tLastIndexOf -> (13): " + stack.LastIndexOf(13));
             Console.WriteLine();
             Console.WriteLine("\tPeek -> " + stack.Peek());
             Console.WriteLine();
@@ -46,17 +53,36 @@ namespace DSA.ConsoleApp.DataStructures.Stack
             Console.WriteLine();
             Console.WriteLine("\tIsEmpty -> " + stack.IsEmpty);
             Console.WriteLine();
-            stack.Push(5);
+            stack.Push(21);
             stack.Push(8);
+            stack.Push(5);
             stack.Push(13);
             Console.WriteLine("\tPush -> " + stack);
             Console.WriteLine();
-            Console.WriteLine("\tLinear Search -> " + new LinearSearch<int>().Search(stack, 5));
-            Console.WriteLine();
-            Console.WriteLine("\tBinary Search -> " + new BinarySearch<int>().Search(stack, 5));
-            Console.WriteLine();
-            Console.WriteLine("\tInterpolation Search -> " + new InterpolationSearch().Search(stack, 5));
-            Console.WriteLine();
+            var searchType = typeof(ISearch<>);
+            var search = new List<Type>(Assembly.GetAssembly(searchType).GetTypes())
+                .Where(x => x.GetInterfaces().Any(y => y.Name == searchType.Name)).ToList();
+            foreach (var type in search)
+            {
+                var genericType = type.MakeGenericType(typeof(int));
+                var item = (ISearch<int>) Activator.CreateInstance(genericType);
+                Console.WriteLine("\t" + genericType.GetCleanTypeName() + " -> " + item.Search(stack, 5));
+                Console.WriteLine();
+            }
+
+            var sortType = typeof(ISort<>);
+            var sort = new List<Type>(Assembly.GetAssembly(sortType).GetTypes())
+                .Where(x => x.GetInterfaces().Any(y => y.Name == sortType.Name)).ToList();
+            foreach (var type in sort)
+            {
+                var genericType = type.MakeGenericType(typeof(int));
+                var item = (ISort<int>) Activator.CreateInstance(genericType);
+                Console.WriteLine("\t" + genericType.GetCleanTypeName() + " -> " + item.Sort(stack));
+                Console.WriteLine();
+                Console.WriteLine("\tOriginal -> " + stack);
+                Console.WriteLine();
+            }
+
             Console.WriteLine("</Array Stack>");
             Console.WriteLine();
         }

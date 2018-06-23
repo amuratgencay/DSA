@@ -40,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStructures\Sort\BubbleSort.cs" />
+    <Compile Include="DataStructures\Sort\InsertionSort.cs" />
+    <Compile Include="DataStructures\Sort\SelectionSort.cs" />
+    <Compile Include="DataStructures\Sort\ShellSort.cs" />
+    <Compile Include="DataStructures\TypeExtenstions.cs" />
     <Compile Include="DataStructures\Array\Vector.cs" />
     <Compile Include="DataStructures\Array\Array.cs" />
     <Compile Include="DataStructures\ICountable.cs" />

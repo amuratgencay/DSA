@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace DSA.BLL.DataStructures.Array
@@ -11,30 +10,30 @@ namespace DSA.BLL.DataStructures.Array
 
         public Vector()
         {
-            Array = new T[1];
+            Arr = new T[1];
             _factor = 1;
         }
 
         public Vector(int count, int factor = 1)
         {
-            Array = new T[count];
+            Arr = new T[count];
             _factor = factor;
         }
 
-        protected T[] Array { get; set; }
-        public virtual int Count => Array.Length;
+        protected T[] Arr { get; set; }
+        public virtual int Count => Arr.Length;
 
         public virtual void Clear()
         {
             for (var i = 0; i < Count; i++)
-                Array[i] = default(T);
+                Arr[i] = default(T);
             Index = 0;
         }
 
         public virtual bool Contains(T item)
         {
             for (var i = 0; i < Count; i++)
-                if (Array[i].Equals(item))
+                if (Arr[i].Equals(item))
                     return true;
 
             return false;
@@ -42,8 +41,8 @@ namespace DSA.BLL.DataStructures.Array
 
         public int IndexOf(T item, int startIndex = 0)
         {
-            for (var i = 0; i < Count; i++)
-                if (Array[i].Equals(item))
+            for (var i = startIndex; i < Count; i++)
+                if (Arr[i].Equals(item))
                     return i;
 
             return -1;
@@ -51,7 +50,14 @@ namespace DSA.BLL.DataStructures.Array
 
         public int LastIndexOf(T item, int startIndex = 0)
         {
-            throw new NotImplementedException();
+            if (startIndex <= 0)
+                startIndex = Count - 1;
+
+            for (var i = startIndex; i >= 0; i--)
+                if (Arr[i].Equals(item))
+                    return i;
+
+            return -1;
         }
 
         public virtual void Reverse(int startIndex = 0, int endIndex = 0)
@@ -69,20 +75,20 @@ namespace DSA.BLL.DataStructures.Array
 
             for (int i = startIndex, j = endIndex; i < j; i++, j--)
             {
-                var tmp = Array[i];
-                Array[i] = Array[j];
-                Array[j] = tmp;
+                var tmp = Arr[i];
+                Arr[i] = Arr[j];
+                Arr[j] = tmp;
             }
         }
 
         public virtual IEnumerable<T> GetEnumerable()
         {
-            return Array.ToList();
+            return Arr.ToList();
         }
 
         public T this[int index]
         {
-            get => Array[index];
+            get => Arr[index];
             set
             {
                 if (index > Index)
@@ -91,26 +97,35 @@ namespace DSA.BLL.DataStructures.Array
                 while (Index - 1 >= Count)
                     ResizeArray();
 
-                Array[index] = value;
+                Arr[index] = value;
             }
+        }
+
+        public object Clone()
+        {
+            var res = new Vector<T>(Count);
+            for (var i = 0; i < Count; i++) res[i] = Arr[i];
+
+            res.Index = Index;
+            return res;
         }
 
         public virtual void Add(T item)
         {
             while (Index >= Count) ResizeArray();
-            Array[Index++] = item;
+            Arr[Index++] = item;
         }
 
         public virtual void Insert(int index, T item)
         {
             while (Index >= Count) ResizeArray();
 
-            var tmp = Array[index];
-            Array[index] = item;
+            var tmp = Arr[index];
+            Arr[index] = item;
             for (var i = index; i < Count - 1; i++)
             {
-                var tmp2 = Array[i + 1];
-                Array[i + 1] = tmp;
+                var tmp2 = Arr[i + 1];
+                Arr[i + 1] = tmp;
                 tmp = tmp2;
             }
 
@@ -120,14 +135,14 @@ namespace DSA.BLL.DataStructures.Array
         public virtual bool Remove(T item)
         {
             if (!Contains(item)) return false;
-            Array[IndexOf(item)] = default(T);
+            Arr[IndexOf(item)] = default(T);
             Index--;
             return true;
         }
 
         public virtual bool RemoveAt(int index)
         {
-            Array[index] = default(T);
+            Arr[index] = default(T);
             Index--;
             return true;
         }
@@ -136,8 +151,8 @@ namespace DSA.BLL.DataStructures.Array
         {
             var tmpCount = Count + _factor;
             var tmp = new T[tmpCount];
-            for (var i = 0; i < Count; i++) tmp[i] = Array[i];
-            Array = tmp;
+            for (var i = 0; i < Count; i++) tmp[i] = Arr[i];
+            Arr = tmp;
         }
 
         public override string ToString()

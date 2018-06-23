@@ -17,5 +17,14 @@
 	1. Array Queue
 	2. Vector Queue
 	3. List Queue
+### Search
+	1. Binary Search
+	2. Interpolation Search
+	3. Linear Search
+### Sort
+	1. Bubble Sort
+	2. Insertion Sort
+	3. Selection Sort
+	4. Shell Sort
 	
  

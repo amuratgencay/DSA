@@ -1,10 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace DSA.BLL.DataStructures.Search
 {
-    public class InterpolationSearch : ISearch<int>
+    public class InterpolationSearch<T> : ISearch<T> where T : IComparable
     {
-        public int Search(ICountable<int> array, int item)
+        public T Search(ICountable<T> array, T item)
         {
             var arr = array.GetEnumerable().OrderBy(x => x).ToList();
             var lower = 0;
@@ -12,7 +13,9 @@ namespace DSA.BLL.DataStructures.Search
             var mid = -1;
             while (lower < upper)
             {
-                mid = lower + (upper - lower) / (arr[upper] - arr[lower]) * (item - arr[lower]);
+                mid = lower + (upper - lower) /
+                      (Math.Abs(arr[upper].GetHashCode()) - Math.Abs(arr[lower].GetHashCode())) *
+                      (Math.Abs(item.GetHashCode()) - Math.Abs(arr[lower].GetHashCode()));
                 if (arr[mid].CompareTo(item) < 0)
                     lower = mid + 1;
                 else if (arr[mid].CompareTo(item) > 0)
@@ -22,7 +25,7 @@ namespace DSA.BLL.DataStructures.Search
             }
 
             if (lower == upper && arr[lower].CompareTo(item) == 0) return arr[lower];
-            return 0;
+            return default(T);
         }
     }
 }

@@ -2,16 +2,19 @@
 {
     public class DoublyLinkedList<T> : LinkedList<T>
     {
-        protected new DoublyListItem<T> First {
-            get => (DoublyListItem<T>)base.First;
-            set =>  base.First = value;
+        protected new DoublyListItem<T> First
+        {
+            get => (DoublyListItem<T>) base.First;
+            set => base.First = value;
         }
-        protected new DoublyListItem<T> Last {
-            get => (DoublyListItem<T>)base.Last;
+
+        protected new DoublyListItem<T> Last
+        {
+            get => (DoublyListItem<T>) base.Last;
             set => base.Last = value;
         }
 
-        public virtual void Add(T item)
+        public override void Add(T item)
         {
             var oldLast = Last;
             base.Add(new DoublyListItem<T>(item));
