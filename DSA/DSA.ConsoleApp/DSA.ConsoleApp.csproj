@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="DataStructures\Array\Sequence\ArrayExample.cs" />
     <Compile Include="DataStructures\Array\Vector\VectorArrayExample.cs" />
+    <Compile Include="DataStructures\CountableExample.cs" />
+    <Compile Include="DataStructures\Example.cs" />
     <Compile Include="DataStructures\LinkedList\CircularLinkedList\CircularLinkedListExample.cs" />
     <Compile Include="DataStructures\LinkedList\DoublyLinkedList\DoublyLinkedListExample.cs" />
     <Compile Include="DataStructures\LinkedList\SinglyLinkedList\SinglyLinkedListExample.cs" />
