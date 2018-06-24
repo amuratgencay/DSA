@@ -43,10 +43,10 @@ namespace DSA.ConsoleApp
                             switch (choice)
                             {
                                 case '1':
-                                    ArrayExample.Run();
+                                    (new ArrayExample()).Run();
                                     break;
                                 case '2':
-                                    VectorArrayExample.Run();
+                                    (new VectorArrayExample()).Run();
                                     break;
                                 case 'b':
                                     done = true;
@@ -76,13 +76,13 @@ namespace DSA.ConsoleApp
                             switch (choice)
                             {
                                 case '1':
-                                    SinglyLinkedListExample.Run();
+                                    (new SinglyLinkedListExample()).Run();
                                     break;
                                 case '2':
-                                    DoublyLinkedListExample.Run();
+                                    (new DoublyLinkedListExample()).Run();
                                     break;
                                 case '3':
-                                    CircularLinkedListExample.Run();
+                                    (new CircularLinkedListExample()).Run();
                                     break;
                                 case 'b':
                                     done = true;

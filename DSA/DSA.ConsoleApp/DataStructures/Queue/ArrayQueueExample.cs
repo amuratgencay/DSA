@@ -9,7 +9,7 @@ using DSA.BLL.DataStructures.Sort;
 
 namespace DSA.ConsoleApp.DataStructures.Queue
 {
-    public static class ArrayQueueExample
+    public class ArrayQueueExample
     {
         public static void Run()
         {
