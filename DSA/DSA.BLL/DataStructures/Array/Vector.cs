@@ -91,7 +91,7 @@ namespace DSA.BLL.DataStructures.Array
             get => Arr[index];
             set
             {
-                if (index > Index)
+                if (index >= Index)
                     Index = index + 1;
 
                 while (Index - 1 >= Count)
