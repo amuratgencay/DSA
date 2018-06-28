@@ -112,13 +112,13 @@ namespace DSA.ConsoleApp
                             switch (choice)
                             {
                                 case '1':
-                                    ArrayStackExample.Run();
+                                    (new ArrayStackExample()).Run();
                                     break;
                                 case '2':
-                                    VectorStackExample.Run();
+                                    (new VectorStackExample()).Run();
                                     break;
                                 case '3':
-                                    ListStackExample.Run();
+                                    (new ListStackExample()).Run();
                                     break;
                                 case 'b':
                                     done = true;
