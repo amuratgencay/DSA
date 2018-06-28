@@ -61,6 +61,15 @@
       <Name>DSA.BLL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataStructures\Menu\Queue.txt" />
+    <Content Include="DataStructures\Menu\Stack.txt" />
+    <Content Include="DataStructures\Menu\LinkedList.txt" />
+    <Content Include="DataStructures\Menu\Array.txt" />
+    <Content Include="DataStructures\Menu\DataStructuresAndAlgorithms.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
