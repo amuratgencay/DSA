@@ -1,6 +1,6 @@
 ﻿namespace DSA.BLL.DataStructures.Queue
 {
-    internal interface IQueue<T> : ICountable<T>
+    public interface IQueue<T> : ICountable<T>
     {
         bool IsEmpty { get; }
         bool IsFull { get; }

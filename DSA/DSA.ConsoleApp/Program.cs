@@ -1,9 +1,7 @@
 ﻿using System;
-using DSA.ConsoleApp.DataStructures.Array.Sequence;
-using DSA.ConsoleApp.DataStructures.Array.Vector;
-using DSA.ConsoleApp.DataStructures.LinkedList.CircularLinkedList;
-using DSA.ConsoleApp.DataStructures.LinkedList.DoublyLinkedList;
-using DSA.ConsoleApp.DataStructures.LinkedList.SinglyLinkedList;
+using DSA.ConsoleApp.DataStructures.Array;
+using DSA.ConsoleApp.DataStructures.Example;
+using DSA.ConsoleApp.DataStructures.LinkedList;
 using DSA.ConsoleApp.DataStructures.Queue;
 using DSA.ConsoleApp.DataStructures.Stack;
 
@@ -11,6 +9,11 @@ namespace DSA.ConsoleApp
 {
     internal class Program
     {
+        private static void Run(Type exampleType)
+        {
+            CountableExample<int> example = (CountableExample<int>)Activator.CreateInstance(exampleType);
+            example.Run();
+        }
         private static void Main(string[] args)
         {
             while (true)
@@ -43,10 +46,10 @@ namespace DSA.ConsoleApp
                             switch (choice)
                             {
                                 case '1':
-                                    (new ArrayExample()).Run();
+                                    Run(typeof(SequenceArrayExample));
                                     break;
                                 case '2':
-                                    (new VectorArrayExample()).Run();
+                                    Run(typeof(VectorArrayExample));
                                     break;
                                 case 'b':
                                     done = true;
@@ -76,13 +79,13 @@ namespace DSA.ConsoleApp
                             switch (choice)
                             {
                                 case '1':
-                                    (new SinglyLinkedListExample()).Run();
+                                    Run(typeof(SinglyLinkedListExample));
                                     break;
                                 case '2':
-                                    (new DoublyLinkedListExample()).Run();
+                                    Run(typeof(DoublyLinkedListExample));
                                     break;
                                 case '3':
-                                    (new CircularLinkedListExample()).Run();
+                                    Run(typeof(CircularLinkedListExample));
                                     break;
                                 case 'b':
                                     done = true;
@@ -112,13 +115,13 @@ namespace DSA.ConsoleApp
                             switch (choice)
                             {
                                 case '1':
-                                    (new ArrayStackExample()).Run();
+                                    Run(typeof(ArrayStackExample));
                                     break;
                                 case '2':
-                                    (new VectorStackExample()).Run();
+                                    Run(typeof(VectorStackExample));
                                     break;
                                 case '3':
-                                    (new ListStackExample()).Run();
+                                    Run(typeof(ListStackExample));
                                     break;
                                 case 'b':
                                     done = true;
@@ -148,13 +151,13 @@ namespace DSA.ConsoleApp
                             switch (choice)
                             {
                                 case '1':
-                                    ArrayQueueExample.Run();
+                                    Run(typeof(ArrayQueueExample));
                                     break;
                                 case '2':
-                                    VectorQueueExample.Run();
+                                    Run(typeof(VectorQueueExample));
                                     break;
                                 case '3':
-                                    ListQueueExample.Run();
+                                    Run(typeof(ListQueueExample));
                                     break;
                                 case 'b':
                                     done = true;

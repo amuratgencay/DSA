@@ -111,8 +111,15 @@ namespace DSA.BLL.DataStructures.LinkedList
             return item.Next;
         }
     }
-
-    public abstract class LinkedList<T> : ICountable<T>
+    public interface IExpandableList<T>
+    {
+        void Add(T item);
+        void Add(ListItem<T> item);
+        bool Remove(T item);
+        bool RemoveAt(int index);
+        void Insert(int index, ListItem<T> item);
+    }
+    public abstract class LinkedList<T> : ICountable<T>, IExpandableList<T>
     {
         protected ListItem<T> First, Last;
 
@@ -245,7 +252,7 @@ namespace DSA.BLL.DataStructures.LinkedList
             Add(new ListItem<T>(item));
         }
 
-        protected virtual void Add(ListItem<T> item)
+        public virtual void Add(ListItem<T> item)
         {
             if (First == null)
             {
@@ -260,7 +267,7 @@ namespace DSA.BLL.DataStructures.LinkedList
             Count++;
         }
 
-        protected virtual void Insert(int index, ListItem<T> item)
+        public virtual void Insert(int index, ListItem<T> item)
         {
             if (index >= Count)
                 throw new IndexOutOfRangeException("Index grater or equal count.");

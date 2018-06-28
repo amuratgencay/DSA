@@ -42,19 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataStructures\Array\Sequence\ArrayExample.cs" />
-    <Compile Include="DataStructures\Array\Vector\VectorArrayExample.cs" />
-    <Compile Include="DataStructures\CountableExample.cs" />
-    <Compile Include="DataStructures\Example.cs" />
-    <Compile Include="DataStructures\LinkedList\CircularLinkedList\CircularLinkedListExample.cs" />
-    <Compile Include="DataStructures\LinkedList\DoublyLinkedList\DoublyLinkedListExample.cs" />
-    <Compile Include="DataStructures\LinkedList\SinglyLinkedList\SinglyLinkedListExample.cs" />
-    <Compile Include="DataStructures\Queue\ListQueueExample.cs" />
-    <Compile Include="DataStructures\Queue\VectorQueueExample.cs" />
-    <Compile Include="DataStructures\Queue\ArrayQueueExample.cs" />
-    <Compile Include="DataStructures\Stack\ListStackExample.cs" />
-    <Compile Include="DataStructures\Stack\VectorStackExample.cs" />
-    <Compile Include="DataStructures\Stack\ArrayStackExample.cs" />
+    <Compile Include="DataStructures\Array\ArrayExample.cs" />
+    <Compile Include="DataStructures\Example\CountableExample.cs" />
+    <Compile Include="DataStructures\Example\Example.cs" />
+    <Compile Include="DataStructures\Example\ExtendedCountableExample.cs" />
+    <Compile Include="DataStructures\LinkedList\LinkedListExample.cs" />
+    <Compile Include="DataStructures\Queue\QueueExample.cs" />
+    <Compile Include="DataStructures\Stack\StackExample.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

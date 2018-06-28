@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DSA.ConsoleApp.DataStructures
+namespace DSA.ConsoleApp.DataStructures.Example
 {
 
     public abstract class Example<T>
