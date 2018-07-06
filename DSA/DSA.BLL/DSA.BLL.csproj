@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStructures\Recursion\Recursion.cs" />
     <Compile Include="DataStructures\Sort\BubbleSort.cs" />
     <Compile Include="DataStructures\Sort\InsertionSort.cs" />
     <Compile Include="DataStructures\Sort\SelectionSort.cs" />

@@ -48,6 +48,7 @@
     <Compile Include="DataStructures\Example\ExtendedCountableExample.cs" />
     <Compile Include="DataStructures\LinkedList\LinkedListExample.cs" />
     <Compile Include="DataStructures\Queue\QueueExample.cs" />
+    <Compile Include="DataStructures\Recursion\RecursionExample.cs" />
     <Compile Include="DataStructures\Stack\StackExample.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,5 +72,6 @@
     <Content Include="DataStructures\Menu\Array.txt" />
     <Content Include="DataStructures\Menu\DataStructuresAndAlgorithms.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
