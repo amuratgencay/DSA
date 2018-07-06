@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 
 namespace DSA.ConsoleApp.DataStructures.Example
 {
-
-    public abstract class Example<T>
+    public abstract class Example
     {
         protected readonly List<Action> Steps;
         public abstract void Init();
@@ -38,5 +37,9 @@ namespace DSA.ConsoleApp.DataStructures.Example
 
             Footer();
         }
+    }
+    public abstract class Example<T> : Example
+    {
+        
     }
 }

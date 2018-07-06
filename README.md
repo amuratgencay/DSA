@@ -26,5 +26,9 @@
 	2. Insertion Sort
 	3. Selection Sort
 	4. Shell Sort
+### Recursion
+	1. Fibonaacci Series
+	2. Factorial
+	3. String Reverse
 	
  

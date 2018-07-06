@@ -4,6 +4,7 @@ using DSA.ConsoleApp.DataStructures.Array;
 using DSA.ConsoleApp.DataStructures.Example;
 using DSA.ConsoleApp.DataStructures.LinkedList;
 using DSA.ConsoleApp.DataStructures.Queue;
+using DSA.ConsoleApp.DataStructures.Recursion;
 using DSA.ConsoleApp.DataStructures.Stack;
 
 namespace DSA.ConsoleApp
@@ -12,7 +13,7 @@ namespace DSA.ConsoleApp
     {
         private static void Run(Type exampleType)
         {
-            CountableExample<int> example = (CountableExample<int>)Activator.CreateInstance(exampleType);
+            Example example = (Example)Activator.CreateInstance(exampleType);
             example.Run();
         }
         private static void Main(string[] args)
@@ -131,7 +132,9 @@ namespace DSA.ConsoleApp
                                     break;
                             }
                         }
-
+                        break;
+                    case '5':
+                        Run(typeof(RecursionExample));
                         break;
                     case 'x':
                         return;
