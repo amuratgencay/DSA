@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
+using DSA.BLL.DataStructures.Tree;
 using DSA.ConsoleApp.DataStructures.Array;
 using DSA.ConsoleApp.DataStructures.Example;
 using DSA.ConsoleApp.DataStructures.LinkedList;
 using DSA.ConsoleApp.DataStructures.Queue;
 using DSA.ConsoleApp.DataStructures.Recursion;
 using DSA.ConsoleApp.DataStructures.Stack;
+using DSA.ConsoleApp.DataStructures.Tree;
 
 namespace DSA.ConsoleApp
 {
@@ -16,10 +18,9 @@ namespace DSA.ConsoleApp
             Example example = (Example)Activator.CreateInstance(exampleType);
             example.Run();
         }
+
         private static void Main(string[] args)
         {
-            
-            
             while (true)
             {
                 Console.WriteLine(File.ReadAllText(@"..\..\DataStructures\Menu\DataStructuresAndAlgorithms.txt"));
@@ -135,6 +136,9 @@ namespace DSA.ConsoleApp
                         break;
                     case '5':
                         Run(typeof(RecursionExample));
+                        break;
+                    case '6':
+                        Run(typeof(TreeExample));
                         break;
                     case 'x':
                         return;

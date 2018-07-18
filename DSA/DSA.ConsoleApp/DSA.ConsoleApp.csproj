@@ -50,6 +50,7 @@
     <Compile Include="DataStructures\Queue\QueueExample.cs" />
     <Compile Include="DataStructures\Recursion\RecursionExample.cs" />
     <Compile Include="DataStructures\Stack\StackExample.cs" />
+    <Compile Include="DataStructures\Tree\TreeExample.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
